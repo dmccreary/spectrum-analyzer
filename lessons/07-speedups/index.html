@@ -15,6 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/spectrum-analyzer/lessons/07-speedups/">
       
       
+        <link rel="prev" href="../06-peak-frequency/">
+      
+      
+        <link rel="next" href="../08-adding-timers/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -22,7 +26,7 @@
     
     
       
-        <title>Further Performance Improvements - Spectrum Analyzer</title>
+        <title>Further Speedups - Spectrum Analyzer</title>
       
     
     
@@ -59,7 +63,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Further Performance Improvements - Spectrum Analyzer" >
+        <meta  property="og:title"  content="Further Speedups - Spectrum Analyzer" >
       
         <meta  property="og:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
       
@@ -75,7 +79,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Further Performance Improvements - Spectrum Analyzer" >
+        <meta  name="twitter:title"  content="Further Speedups - Spectrum Analyzer" >
       
         <meta  name="twitter:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
       
@@ -135,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Further Performance Improvements
+              Further Speedups
             
           </span>
         </div>
@@ -280,6 +284,456 @@
   
 
       </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    Lessons
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Lessons
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-test-incoming-sound/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test Sound
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-display-scroll/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Display Scroll
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-optimizing-fft-speed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-frequency-shift/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequency Window
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-peak-frequency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Peak Frequency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Further Speedups
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Further Speedups
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#claude-sonnet-37-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claude Sonnet 3.7 Response
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Claude Sonnet 3.7 Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-reduce-sample-size-and-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Reduce Sample Size and Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-optimize-memory-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Optimize Memory Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-simplify-the-display-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Simplify the Display Logic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-hardware-acceleration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Hardware Acceleration Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-pio-for-i2s-data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use PIO for I2S Data Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-dma-for-memory-transfers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use DMA for Memory Transfers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm-dsp-assembly-optimizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM DSP Assembly Optimizations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-parallel-processing-with-dual-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Parallel Processing with Dual Cores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-efficient-algorithm-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Efficient Algorithm Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Priority
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limited-frequency-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limited Frequency Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-the-fft-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the FFT Size
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lower-the-sample-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lower the Sample Rate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-assembly-version-of-fft-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Assembly Version of FFT (ARM)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-adding-timers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding Timers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-assembler-function/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assembler FFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-future-improvements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Future Work
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
     </li>
   
 
@@ -909,6 +1363,44 @@ mip.install(&quot;github:peterhinch/micropython-fourier&quot;)
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../06-peak-frequency/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Peak Frequency">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Peak Frequency
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../08-adding-timers/" class="md-footer__link md-footer__link--next" aria-label="Next: Adding Timers">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Adding Timers
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
