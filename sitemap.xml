@@ -32,4 +32,56 @@
          <loc>https://dmccreary.github.io/spectrum-analyzer/research/</loc>
          <lastmod>2025-03-22</lastmod>
     </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/01-test-incoming-sound/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/02-gain-pot/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/03-display-scroll/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/04-optimizing-fft-speed/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/05-frequency-shift/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/06-peak-frequency/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/07-speedups/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/08-adding-timers/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/09-assembler-function/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/10-future-improvements/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/sims/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/sims/signal-generator/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
 </urlset>

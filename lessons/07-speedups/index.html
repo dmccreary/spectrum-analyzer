@@ -1,0 +1,945 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/spectrum-analyzer/lessons/07-speedups/">
+      
+      
+      
+      
+      <link rel="icon" href="../../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+    
+    
+      
+        <title>Further Performance Improvements - Spectrum Analyzer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../css/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Further Performance Improvements - Spectrum Analyzer" >
+      
+        <meta  property="og:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/lessons/07-speedups.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/spectrum-analyzer/lessons/07-speedups/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Further Performance Improvements - Spectrum Analyzer" >
+      
+        <meta  name="twitter:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/lessons/07-speedups.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#further-performance-improvements" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="Spectrum Analyzer" class="md-header__button md-logo" aria-label="Spectrum Analyzer" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spectrum Analyzer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Further Performance Improvements
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/spectrum-analyzer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="Spectrum Analyzer" class="md-nav__button md-logo" aria-label="Spectrum Analyzer" data-md-component="logo">
+      
+  <img src="../../img/logo.png" alt="logo">
+
+    </a>
+    Spectrum Analyzer
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/spectrum-analyzer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../about.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../research/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#claude-sonnet-37-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Claude Sonnet 3.7 Response
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Claude Sonnet 3.7 Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-reduce-sample-size-and-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Reduce Sample Size and Processing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-optimize-memory-usage" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Optimize Memory Usage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-simplify-the-display-logic" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Simplify the Display Logic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-hardware-acceleration-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Hardware Acceleration Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-pio-for-i2s-data-collection" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use PIO for I2S Data Collection
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-dma-for-memory-transfers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use DMA for Memory Transfers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#arm-dsp-assembly-optimizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM DSP Assembly Optimizations
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-parallel-processing-with-dual-cores" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Parallel Processing with Dual Cores
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-efficient-algorithm-implementation" class="md-nav__link">
+    <span class="md-ellipsis">
+      6. Efficient Algorithm Implementation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-priority" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Priority
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#limited-frequency-analysis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Limited Frequency Analysis
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#changing-the-fft-size" class="md-nav__link">
+    <span class="md-ellipsis">
+      Changing the FFT Size
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lower-the-sample-rate" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lower the Sample Rate
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#using-assembly-version-of-fft-arm" class="md-nav__link">
+    <span class="md-ellipsis">
+      Using Assembly Version of FFT (ARM)
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/spectrum-analyzer/blob/master/docs/lessons/07-speedups.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="further-performance-improvements">Further Performance Improvements</h1>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+<p>The MicroPython frequency analyzer code in the file 20-fft-range-2600.py is working pretty well on the fast new Raspberry Pi Pico 2.  However, it has a noticeable lag between when a sound as a specific frequency is played and when the peak appears on the display.  The delay is a few seconds.  Can we lower the delay in any way?  Just look at the code and give me some options like using DMA or using a version of the FFT written in ARM assembly code.</p>
+<p><a href="https://github.com/dmccreary/learning-micropython/blob/main/src/kits/fft/20-fft-range-2600.py">20-fft-range-2600.py in GitHub src/kits/fft</a></p>
+</div>
+<h2 id="claude-sonnet-37-response">Claude Sonnet 3.7 Response</h2>
+<p>I'll analyze the code to suggest ways to reduce the lag between sound input and display updates in your frequency analyzer. Here are several optimization options:</p>
+<h3 id="1-reduce-sample-size-and-processing">1. Reduce Sample Size and Processing</h3>
+<p>The current FFT_SIZE of 512 provides good resolution but requires significant processing time. Consider:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Try a smaller FFT size</span>
+<span class="n">FFT_SIZE</span> <span class="o">=</span> <span class="mi">256</span>  <span class="c1"># or even 128</span>
+</code></pre></div></td></tr></table></div>
+<p>This would cut processing time significantly at the cost of some frequency resolution.</p>
+<h3 id="2-optimize-memory-usage">2. Optimize Memory Usage</h3>
+<p>The code creates new arrays frequently, which triggers garbage collection and slows things down:</p>
+<ul>
+<li>Use pre-allocated buffers more consistently</li>
+<li>Eliminate redundant array allocations in <code>capture_audio_samples()</code> and <code>calculate_magnitudes()</code></li>
+<li>Use a single shared array for the magnitudes</li>
+</ul>
+<h3 id="3-simplify-the-display-logic">3. Simplify the Display Logic</h3>
+<p>The display rendering is relatively complex:</p>
+<ul>
+<li>Reduce number of bins displayed (try 32 instead of 64)</li>
+<li>Simplify scaling calculations</li>
+<li>Only update parts of the display that change, not the entire screen</li>
+</ul>
+<h3 id="4-hardware-acceleration-options">4. Hardware Acceleration Options</h3>
+<p>For more significant improvements:</p>
+<h3 id="use-pio-for-i2s-data-collection">Use PIO for I2S Data Collection</h3>
+<p>The Pico's PIO (Programmable I/O) can handle I2S sampling in the background while the CPU works on FFT processing:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Example of using PIO for I2S</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">Pin</span>
+<span class="kn">import</span> <span class="nn">rp2</span>
+
+<span class="nd">@rp2</span><span class="o">.</span><span class="n">asm_pio</span><span class="p">(</span>
+    <span class="n">fifo_join</span><span class="o">=</span><span class="n">rp2</span><span class="o">.</span><span class="n">PIO</span><span class="o">.</span><span class="n">JOIN_RX</span><span class="p">,</span>
+    <span class="n">in_shiftdir</span><span class="o">=</span><span class="n">rp2</span><span class="o">.</span><span class="n">PIO</span><span class="o">.</span><span class="n">SHIFT_LEFT</span><span class="p">,</span>
+    <span class="n">autopush</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+    <span class="n">push_thresh</span><span class="o">=</span><span class="mi">32</span>
+<span class="p">)</span>
+<span class="k">def</span> <span class="nf">i2s_pio</span><span class="p">():</span>
+    <span class="c1"># PIO program for I2S capture</span>
+    <span class="c1"># ...</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="use-dma-for-memory-transfers">Use DMA for Memory Transfers</h3>
+<p>DMA could handle moving data from I2S to memory and from memory to display without CPU intervention:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Example DMA setup</span>
+<span class="kn">from</span> <span class="nn">machine</span> <span class="kn">import</span> <span class="n">mem32</span>
+
+<span class="c1"># Set up DMA channel for data transfer</span>
+<span class="n">DMA_BASE</span> <span class="o">=</span> <span class="mh">0x50000000</span>
+<span class="c1"># Configure DMA registers for transfer</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="arm-dsp-assembly-optimizations">ARM DSP Assembly Optimizations</h3>
+<p>For the RP2040 chip in the Pico, you could use optimized ARM assembly for FFT:</p>
+<ol>
+<li>Create a C module with ARM CMSIS DSP library for FFT</li>
+<li>Compile it as a MicroPython native module</li>
+<li>Import and use it in your Python code</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1"># Example usage of a hypothetical native FFT module</span>
+<span class="kn">import</span> <span class="nn">armfft</span>
+
+<span class="c1"># Then replace your FFT function with:</span>
+<span class="k">def</span> <span class="nf">process_fft</span><span class="p">(</span><span class="n">samples</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">armfft</span><span class="o">.</span><span class="n">compute</span><span class="p">(</span><span class="n">samples</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="5-parallel-processing-with-dual-cores">5. Parallel Processing with Dual Cores</h3>
+<p>The Pico has dual cores - you could dedicate one core to FFT processing and the other to display:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">import</span> <span class="nn">_thread</span>
+
+<span class="c1"># Core 1: Handle audio sampling and FFT</span>
+<span class="k">def</span> <span class="nf">core1_task</span><span class="p">():</span>
+    <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+        <span class="c1"># Sample audio and compute FFT</span>
+        <span class="c1"># Place results in shared buffer</span>
+
+<span class="c1"># Core 0 (main): Handle display updates</span>
+<span class="n">_thread</span><span class="o">.</span><span class="n">start_new_thread</span><span class="p">(</span><span class="n">core1_task</span><span class="p">,</span> <span class="p">())</span>
+<span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+    <span class="c1"># Read from shared buffer</span>
+    <span class="c1"># Update display</span>
+</code></pre></div></td></tr></table></div>
+<h3 id="6-efficient-algorithm-implementation">6. Efficient Algorithm Implementation</h3>
+<p>Replace the current iterative FFT with a more optimized version like the split-radix FFT or use a fixed-point implementation that avoids floating-point operations.</p>
+<h3 id="implementation-priority">Implementation Priority</h3>
+<p>I recommend trying these options in this order:</p>
+<ol>
+<li>First, try reducing the FFT size to 256 or 128 - this is the simplest change with significant impact</li>
+<li>Next, implement dual-core processing to parallelize computation and display</li>
+<li>Then optimize memory usage with pre-allocated buffers</li>
+<li>Finally, consider PIO and DMA if further optimization is needed</li>
+</ol>
+<p>Would you like more details on implementing any of these specific approaches?</p>
+<h3 id="limited-frequency-analysis">Limited Frequency Analysis</h3>
+<h2 id="changing-the-fft-size">Changing the FFT Size</h2>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+<p>For demos, you can see we are only looking at the frequencies below 
+2,600 Hz.  Will using 256 or 128 sizes still work?</p>
+</div>
+<p>Yes, using FFT_SIZE of 256 or 128 would still work well for your frequency range of interest (below 2,600 Hz).</p>
+<p>Let's analyze why:</p>
+<p>With your current configuration:</p>
+<ul>
+<li>Sample rate: 16,000 Hz</li>
+<li>FFT_SIZE: 512</li>
+<li>Nyquist frequency: 8,000 Hz</li>
+<li>Frequency resolution: 31.25 Hz per bin (16,000/512 * 0.5)</li>
+<li>You're focusing on 0-2,600 Hz (roughly the first third of your spectrum)</li>
+</ul>
+<p>If you reduce to FFT_SIZE = 256:</p>
+<ul>
+<li>Frequency resolution becomes: 62.5 Hz per bin</li>
+<li>You'd still have about 41-42 bins for your 0-2,600 Hz range (2600/62.5)</li>
+<li>This is enough resolution for most audio demos showing voice, whistles, or musical tones</li>
+</ul>
+<p>If you reduce to FFT_SIZE = 128:</p>
+<ul>
+<li>Frequency resolution becomes: 125 Hz per bin</li>
+<li>You'd have about 20-21 bins for your 0-2,600 Hz range</li>
+<li>Still sufficient for showing major frequency peaks but with less precision</li>
+</ul>
+<p>The tradeoffs:</p>
+<p>FFT_SIZE = 256:</p>
+<ul>
+<li>Processing time reduced by approximately 50%</li>
+<li>Memory usage reduced by 50%</li>
+<li>Resolution still good enough to distinguish nearby frequencies</li>
+<li>Suitable for most demo purposes</li>
+</ul>
+<p>FFT_SIZE = 128:</p>
+<ul>
+<li>Processing time reduced by approximately 75%</li>
+<li>Memory usage reduced by 75% </li>
+<li>Resolution becomes more coarse but still usable</li>
+<li>Better for showing only major frequency components</li>
+</ul>
+<p>For demo purposes where responsiveness is more important than precision, I'd recommend trying FFT_SIZE = 256 first. This should significantly reduce your lag while still providing good visual feedback for frequency content below 2,600 Hz.</p>
+<p>If you're primarily interested in showing distinct tones (like whistling or musical notes) rather than detailed frequency analysis, even FFT_SIZE = 128 should be sufficient and provide very responsive updates.</p>
+<h2 id="lower-the-sample-rate">Lower the Sample Rate</h2>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+<p>Would it help to change the sample rate from 16K down to 8K?</p>
+</div>
+<p>Yes, reducing the sample rate from 16 kHz to 8 kHz would definitely help reduce processing lag, particularly for your specific use case.</p>
+<p>Let's analyze why:</p>
+<ol>
+<li>
+<p><strong>Lower computational load</strong>:</p>
+</li>
+<li>
+<p>Half the samples to process means roughly half the processing time</p>
+</li>
+<li>The I2S data collection will require half the bandwidth</li>
+<li>
+<p>Less memory needed for buffers</p>
+</li>
+<li>
+<p><strong>Still sufficient for your frequency range</strong>:</p>
+</li>
+<li>
+<p>With 8 kHz sample rate, your Nyquist frequency becomes 4 kHz</p>
+</li>
+<li>Since you're only interested in frequencies below 2.6 kHz, this is perfectly adequate</li>
+<li>
+<p>You're not losing any useful frequency information for your application</p>
+</li>
+<li>
+<p><strong>Better frequency resolution trade-off</strong>:</p>
+</li>
+<li>
+<p>With 8 kHz sample rate and FFT_SIZE = 256:</p>
+<ul>
+<li>Frequency resolution would be 31.25 Hz (8000/256 * 0.5)</li>
+<li>This is the same resolution as your current setup with FFT_SIZE = 512 at 16 kHz</li>
+</ul>
+</li>
+<li>With 8 kHz sample rate and FFT_SIZE = 128:<ul>
+<li>Frequency resolution would be 62.5 Hz</li>
+<li>Still quite reasonable for visualizing frequency components in your range</li>
+</ul>
+</li>
+</ol>
+<p>By combining a lower sample rate (8 kHz) with a smaller FFT size (256 or 128), you could reduce the processing load by 75-87.5% compared to your current implementation, which should significantly reduce the lag between sound input and display updates.</p>
+<p>To implement this change, you would just need to update the sample rate in your I2S configuration:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">SAMPLE_RATE</span> <span class="o">=</span> <span class="mi">8000</span>  <span class="c1"># Changed from 16000</span>
+</code></pre></div></td></tr></table></div>
+<p>And potentially adjust the FFT size:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="n">FFT_SIZE</span> <span class="o">=</span> <span class="mi">256</span>  <span class="c1"># or 128 for even faster processing</span>
+</code></pre></div></td></tr></table></div>
+<p>This would be one of the most straightforward optimizations with a substantial impact on responsiveness.</p>
+<h2 id="using-assembly-version-of-fft-arm">Using Assembly Version of FFT (ARM)</h2>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+<p>I have found a person that claims to have written a single precision FFT written in ARM assembler that is callable from MicroPython.  The GitHub site implies that the Pico 2 could use this.  Is it possible this would work?</p>
+<p>https://github.com/peterhinch/micropython-fourier/blob/master/README.md</p>
+</div>
+<p>This looks very promising for your project. The micropython-fourier library by Peter Hinch is specifically designed for MicroPython and includes ARM assembly optimized FFT implementations. Let's analyze whether this would work for your Raspberry Pi Pico 2:</p>
+<ol>
+<li>
+<p><strong>Compatibility</strong>:</p>
+</li>
+<li>
+<p>The README explicitly states it's compatible with the RP2040 (the chip in both Pico and Pico 2)</p>
+</li>
+<li>
+<p>It lists specific support for the Pico, and the Pico 2 uses the same architecture with higher clock speeds</p>
+</li>
+<li>
+<p><strong>Performance benefits</strong>:</p>
+</li>
+<li>
+<p>The library claims significant speed improvements - up to 6x faster than equivalent Python code</p>
+</li>
+<li>Written in ARM assembly specifically optimized for the Cortex-M0+ (RP2040's architecture)</li>
+<li>
+<p>The benchmarks in the documentation show impressive performance gains</p>
+</li>
+<li>
+<p><strong>Integration ease</strong>:</p>
+</li>
+<li>
+<p>Designed as a MicroPython module, making it straightforward to integrate with your existing code</p>
+</li>
+<li>Includes both FFT and inverse FFT implementations</li>
+<li>Supports single-precision floating-point operations</li>
+</ol>
+<p>To implement this in your project, you would:</p>
+<ol>
+<li>First install the library on your Pico 2:</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code># Using mip (MicroPython package manager)
+import mip
+mip.install(&quot;github:peterhinch/micropython-fourier&quot;)
+</code></pre></div></td></tr></table></div>
+<ol>
+<li>Then modify your code to use this optimized FFT:</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">fourier</span> <span class="kn">import</span> <span class="n">fft</span>
+
+<span class="c1"># Replace your iterative_fft function with this:</span>
+<span class="k">def</span> <span class="nf">process_fft</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">):</span>
+    <span class="c1"># The library might expect a different data format</span>
+    <span class="c1"># Check documentation for exact usage</span>
+    <span class="k">return</span> <span class="n">fft</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<p>The speed improvement from using assembly-optimized code, combined with the other optimizations we discussed (reduced sample rate and smaller FFT size), could dramatically reduce the lag in your frequency analyzer.</p>
+<p>Given that Peter Hinch is a well-known contributor to the MicroPython ecosystem and his libraries are generally high quality, this is likely your best option for optimizing FFT performance on the Pico 2.</p>
+<div class="admonition challenges">
+<p class="admonition-title">Challenges</p>
+<ul>
+<li>Try different window functions (like Hamming or Blackman windows instead of Hanning) for different spectral leakage characteristics</li>
+<li>Try Adjusting the scaling factor to get better visual representation of quiet sounds</li>
+<li>Try Creating different display modes (like a waterfall display or peak hold feature)</li>
+</ul>
+</div>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../../js/extra.js"></script>
+      
+    
+  </body>
+</html>
