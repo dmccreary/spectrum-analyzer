@@ -1,0 +1,57 @@
+site_name: Spectrum Analyzer
+site_description: 'Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display.'
+site_author: 'Dan McCreary'
+repo_name: 'GitHub Repo'
+site_url: 'https://dmccreary.github.io/spectrum-analyzer/'
+repo_url: 'https://github.com/dmccreary/spectrum-analyzer'
+edit_uri: 'blob/master/docs'
+
+nav:
+  - Home: index.md
+  - About: about.md
+  - Research: research.md
+  - Glossary: glossary.md
+  - How We Built This Site: how-we-built-this-site.md
+  - References: references.md
+  - Contact: contact.md
+ 
+# Dan's Microsite Standards from here down
+
+theme:
+  name: material
+  logo: img/logo.png
+  favicon: img/favicon.ico
+  palette:
+    primary: 'navy'
+    accent: 'orange'
+  include_sidebar: true
+  features:
+    - content.code.copy
+    - navigation.expand
+    - navigation.path
+    - navigation.prune
+    - navigation.indexes
+    - toc.follow
+    - navigation.top
+    # this adds the prev and next icons in the footer
+    - navigation.footer
+    - content.action.edit
+plugins:
+  - search
+  - social
+markdown_extensions:
+  - admonition
+  - pymdownx.details
+  - pymdownx.superfences
+  - attr_list
+  - pymdownx.highlight:
+      linenums: true
+extra_css:
+   - css/extra.css
+extra_javascript:
+    - js/extra.js
+#extra:
+#  analytics:
+#    provider: google
+    # https://analytics.google.com/analytics/web/#/a1420179p349994530/admin/streams/table/4433129821
+#    property: G-XXXX
