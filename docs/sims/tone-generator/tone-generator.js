@@ -2,7 +2,8 @@
 // the width of the entire canvas
 let canvasWidth = 400;
 // The top drawing region above the interactive controls
-let drawHeight = 400;
+let drawHeight = 200;
+let waveHeight = drawHeight / 4;
 // control region height
 let controlHeight = 50;
 // The total height of both the drawing region height + the control region height
@@ -82,7 +83,7 @@ function draw() {
       let angle = map(i, 0, waveLength, 0, TWO_PI);
       // The higher the frequency, the more waves we draw
       let frequencyFactor = frequency / 440; // normalized to standard A
-      wavePoints[i] = sin(angle * frequencyFactor + thePhase) * 100;
+      wavePoints[i] = sin(angle * frequencyFactor + thePhase) * waveHeight;
     }
   }
   
@@ -94,7 +95,7 @@ function draw() {
   noStroke();
   textAlign(CENTER, CENTER);
   textSize(48);
-  text(frequency + ' Hz', width/2, 50);
+  text(frequency + ' Hz', width/2, 40);
   
   // Draw control labels
   fill('black');
@@ -114,7 +115,7 @@ function drawWave() {
   beginShape();
   for (let i = 0; i < waveLength; i++) {
     let x = map(i, 0, waveLength, -waveLength/2, waveLength/2);
-    vertex(x, wavePoints[i]);
+    vertex(x* canvasWidth*.0047, wavePoints[i]);
   }
   endShape();
   pop();
