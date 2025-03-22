@@ -9,6 +9,17 @@ edit_uri: 'blob/master/docs'
 nav:
   - Home: index.md
   - About: about.md
+  - Lessons: 
+      - Introduction: lessons/index.md
+      - Test Sound: lessons/01-test-incoming-sound.md
+      - Display Scroll: lessons/03-display-scroll.md
+      - Optimization: lessons/04-optimizing-fft-speed.md
+      - Frequency Window: lessons/05-frequency-shift.md
+      - Peak Frequency: lessons/06-peak-frequency.md
+      - Further Speedups: lessons/07-speedups.md
+      - Adding Timers: lessons/08-adding-timers.md
+      - Assembler FFT: lessons/09-assembler-function.md
+      - Future Work: lessons/10-future-improvements.md
   - Research: research.md
   - Glossary: glossary.md
   - How We Built This Site: how-we-built-this-site.md
