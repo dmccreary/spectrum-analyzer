@@ -1,5 +1,14 @@
 # Site References
 
+## FFT References
+
+1. [Peter Hinch's GitHub with FFT in ARM assembler for the Pico](https://github.com/peterhinch/micropython-fourier)
+2. [CMSIS Sandbox JP Trainor GitHub Repo](https://github.com/jptrainor/cmsis-sandbox)
+3. [Library with FFT functions for the Pico Googool GitHub Repo](https://github.com/Googool/pico_fft)
+4. [ARM v7-M Architecture Reference Manual](https://developer.arm.com/documentation/ddi0403/latest/)
+
+## Site Build Tool References
+
 1. **mkdocs** - [https://www.mkdocs.org/](https://www.mkdocs.org/) - this is our tool for building the website.  It converts Markdown into HTML in the ```site``` directory.
 2. **mkdocs material theme** - [https://squidfunk.github.io/mkdocs-material/](https://squidfunk.github.io/mkdocs-material/) - this is the theme for our site.  The theme adds the user interface elements that give our site the look and feel.  It also has the features such as social cards.
 3. **GitHub Pages** - [https://pages.github.com/](https://pages.github.com/) - this is the free tool for hosting public websites created by mkdocs
