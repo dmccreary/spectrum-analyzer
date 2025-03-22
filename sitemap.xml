@@ -9,6 +9,10 @@
          <lastmod>2025-03-22</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/course-description/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/feedback/</loc>
          <lastmod>2025-03-22</lastmod>
     </url>
@@ -93,11 +97,19 @@
          <lastmod>2025-03-22</lastmod>
     </url>
     <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/sims/base-and-treble/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/sims/templates/</loc>
          <lastmod>2025-03-22</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/sims/tone-generator/</loc>
+         <lastmod>2025-03-22</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/sims/waveform-types/</loc>
          <lastmod>2025-03-22</lastmod>
     </url>
 </urlset>
