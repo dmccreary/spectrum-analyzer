@@ -10,6 +10,7 @@ nav:
   - Home: index.md
   - About: about.md
   - Research: research.md
+  - Course Description: course-description.md
   - Setup:
     - Introduction: setup/index.md
     - Hardware: setup/hardware.md
@@ -28,7 +29,9 @@ nav:
       - Future Work: lessons/10-future-improvements.md
   - MicroSims: 
     - Introduction: sims/index.md
+    - Base and Treble: sims/base-and-treble.md
     - Tone Generator: sims/tone-generator/index.md
+    - Waveform Types: sims/waveform-types/index.md
   - Feedback: feedback.md
   - License: license.md
   - Glossary: glossary.md
