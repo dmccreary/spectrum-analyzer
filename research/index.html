@@ -1,0 +1,781 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display.">
+      
+      
+        <meta name="author" content="Dan McCreary">
+      
+      
+        <link rel="canonical" href="https://dmccreary.github.io/spectrum-analyzer/research/">
+      
+      
+        <link rel="prev" href="..">
+      
+      
+        <link rel="next" href="../glossary/">
+      
+      
+      <link rel="icon" href="../img/favicon.ico">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+    
+    
+      
+        <title>Research - Spectrum Analyzer</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.0253249f.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,700,700i%7CRoboto+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Roboto";--md-code-font:"Roboto Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../css/extra.css">
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+
+    
+    
+      
+        <meta  property="og:type"  content="website" >
+      
+        <meta  property="og:title"  content="Research - Spectrum Analyzer" >
+      
+        <meta  property="og:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
+      
+        <meta  property="og:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/research.png" >
+      
+        <meta  property="og:image:type"  content="image/png" >
+      
+        <meta  property="og:image:width"  content="1200" >
+      
+        <meta  property="og:image:height"  content="630" >
+      
+        <meta  property="og:url"  content="https://dmccreary.github.io/spectrum-analyzer/research/" >
+      
+        <meta  name="twitter:card"  content="summary_large_image" >
+      
+        <meta  name="twitter:title"  content="Research - Spectrum Analyzer" >
+      
+        <meta  name="twitter:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
+      
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/research.png" >
+      
+    
+    
+  </head>
+  
+  
+    
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="navy" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#research" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="Spectrum Analyzer" class="md-header__button md-logo" aria-label="Spectrum Analyzer" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            Spectrum Analyzer
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Research
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+    
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/dmccreary/spectrum-analyzer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+
+<nav class="md-nav md-nav--primary" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="Spectrum Analyzer" class="md-nav__button md-logo" aria-label="Spectrum Analyzer" data-md-component="logo">
+      
+  <img src="../img/logo.png" alt="logo">
+
+    </a>
+    Spectrum Analyzer
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/dmccreary/spectrum-analyzer" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.6.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    GitHub Repo
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Home
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../about.md" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    About
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Research
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#raspberry-pi-pico-2-fft-documentation-optimized-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raspberry Pi Pico 2 FFT: Documentation &amp; Optimized Implementations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-dsp-capabilities-of-rp2350-pico-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware DSP Capabilities of RP2350 (Pico 2)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware DSP Capabilities of RP2350 (Pico 2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authoritative-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authoritative references
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimized-fft-libraries-for-cortex-m33-rp2350" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimized FFT Libraries for Cortex-M33 (RP2350)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dual-core-audio-processing-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual-Core Audio Processing Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#micropython-and-assembly-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroPython and Assembly Integration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-and-further-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion and Further Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../glossary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Glossary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../how-we-built-this-site/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    How We Built This Site
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../references/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    References
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../contact/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Contact
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#raspberry-pi-pico-2-fft-documentation-optimized-implementations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Raspberry Pi Pico 2 FFT: Documentation &amp; Optimized Implementations
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#hardware-dsp-capabilities-of-rp2350-pico-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Hardware DSP Capabilities of RP2350 (Pico 2)
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Hardware DSP Capabilities of RP2350 (Pico 2)">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#authoritative-references" class="md-nav__link">
+    <span class="md-ellipsis">
+      Authoritative references
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#optimized-fft-libraries-for-cortex-m33-rp2350" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimized FFT Libraries for Cortex-M33 (RP2350)
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#dual-core-audio-processing-examples" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dual-Core Audio Processing Examples
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#micropython-and-assembly-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      MicroPython and Assembly Integration
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion-and-further-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion and Further Resources
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+  
+    <a href="https://github.com/dmccreary/spectrum-analyzer/blob/master/docs/research.md" title="Edit this page" class="md-content__button md-icon">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
+    </a>
+  
+  
+
+
+<h1 id="research">Research</h1>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+<p>I have a Raspberry Pi Pico 2 that has a dual core RP2350 system on a chip.  Each core is a Cortex-M33 with floating point and DSP support.</p>
+<p>I want to run sound signal processing on these devices and run algorithms like the FFT that leverage the new floating point and the new DSP support.</p>
+<p>Can you fine any documentation and sample FFT code that has been finely tuned for the Pico 2?</p>
+<p>I am already aware of Peter Hinch's implementation of FFT in ARM assembly from his GitHub repo.  However, his code is over 10 years old and clearly does not use any of the new features on the Pico 2.</p>
+<p>Note that Peter's FFT in ARM assembly is here:
+https://github.com/peterhinch/micropython-fourier/blob/master/dft.py
+Note that it has not changed since 2015.</p>
+<p>I am looking for authoritative information and working code that will take advantage of every feature of the Pico 2 including using dual-cores to read in sound and write FFT spectrums to a display.  I would prefer code that also has a test suite and benchmarking tools on synthetic data.</p>
+</div>
+<p>Great, I’ll look for documentation and optimized FFT code for the Raspberry Pi Pico 2 (RP2350) that is compatible with MicroPython and designed to leverage its dual-core Cortex-M33 architecture, FPU, and DSP support. I’ll also search for examples that include performance benchmarks or testing tools, ideally with MicroPython calling into assembly or C. I’ll get back to you shortly with what I find.</p>
+<h2 id="raspberry-pi-pico-2-fft-documentation-optimized-implementations">Raspberry Pi Pico 2 FFT: Documentation &amp; Optimized Implementations</h2>
+<h2 id="hardware-dsp-capabilities-of-rp2350-pico-2">Hardware DSP Capabilities of RP2350 (Pico 2)</h2>
+<p>The <strong>Raspberry Pi Pico 2</strong> is built on the RP2350 microcontroller, which features dual Arm Cortex-M33 cores running up to 150 MHz. In contrast to the original Pico’s M0+ cores, the M33 cores include a single-precision <strong>FPU (Floating Point Unit)</strong> and Armv8-M <strong>DSP instructions</strong> (<a href="https://smist08.wordpress.com/2024/08/30/introducing-the-rp2350/#:~:text=The%20most%20interesting%20part%20to,V%20cores">Introducing the RP2350 | Stephen Smith's Blog</a>). This means the Pico 2 can perform floating-point math in hardware and use SIMD-like DSP operations (e.g. single-cycle multiply-accumulate) for faster signal processing. Official datasheets and ARM’s documentation note these enhancements, which significantly improve algorithms like FFT on this platform (<a href="https://smist08.wordpress.com/2024/08/30/introducing-the-rp2350/#:~:text=The%20most%20interesting%20part%20to,V%20cores">Introducing the RP2350 | Stephen Smith's Blog</a>). (The RP2350 also has a dual-core RISC-V cluster, but only one of the two architectures can run at a time.) </p>
+<h3 id="authoritative-references">Authoritative references</h3>
+<ul>
+<li><em>RP2350 Datasheet / Tech Docs</em>: The Raspberry Pi Foundation provides documentation for the RP2350, detailing its Cortex-M33 cores, FPU support, and DSP instruction set. These instructions accelerate common DSP operations (fixed-point arithmetic, saturating Q15/Q31 math, etc.), benefiting FFT and filtering routines.  </li>
+<li><em>ARM Cortex-M33 Docs</em>: ARM’s official manuals describe the M33’s instruction set and extensions. Notably, the M33’s DSP extension adds optimized arithmetic instructions, and the single-precision FPU executes IEEE754 float operations in hardware (<a href="https://smist08.wordpress.com/2024/08/30/introducing-the-rp2350/#:~:text=The%20most%20interesting%20part%20to,V%20cores">Introducing the RP2350 | Stephen Smith's Blog</a>). Together, these enable much faster FFT computation than on the original Pico (which lacked an FPU or DSP extensions).</li>
+</ul>
+<h2 id="optimized-fft-libraries-for-cortex-m33-rp2350">Optimized FFT Libraries for Cortex-M33 (RP2350)</h2>
+<p><strong>ARM CMSIS-DSP Library:</strong> The <strong>CMSIS-DSP</strong> library is an ARM-developed collection of highly optimized DSP functions for Cortex-M cores (<a href="https://github.com/jptrainor/cmsis-sandbox#:~:text=CMSIS,and%20fixed%20point%20data%20types">GitHub - jptrainor/cmsis-sandbox: Benchmarking CMSIS-DSP on Rasberry Pi Pico</a>). It includes FFT implementations for various data types (32-bit float, 64-bit float, Q15, Q31 fixed-point) that automatically leverage the hardware FPU and DSP instructions when available (<a href="https://github.com/jptrainor/cmsis-sandbox#:~:text=It%20supports%20floating%20point%20and,fixed%20point%20data%20types">GitHub - jptrainor/cmsis-sandbox: Benchmarking CMSIS-DSP on Rasberry Pi Pico</a>) (<a href="https://github.com/jptrainor/cmsis-sandbox#:~:text=,q15_t">GitHub - jptrainor/cmsis-sandbox: Benchmarking CMSIS-DSP on Rasberry Pi Pico</a>). For example, CMSIS-DSP provides functions like <code>arm_rfft_fast_f32</code> (for real FFT on floats) and <code>arm_cfft_q15</code> (complex FFT on Q15 fixed-point) among many others (<a href="https://github.com/jptrainor/cmsis-sandbox#:~:text=The%20FFT%20benchmark%20times%20the,DSP%20functions%20are">GitHub - jptrainor/cmsis-sandbox: Benchmarking CMSIS-DSP on Rasberry Pi Pico</a>). On the Pico 2’s M33, these routines run very efficiently – using the FPU for floating-point FFTs or SIMD fixed-point arithmetic for Q15/Q31 FFTs. ARM’s documentation explains that the “Fast” real-FFT algorithms exploit symmetry to halve the computation versus naive complex FFTs (<a href="https://arm-software.github.io/CMSIS-DSP/main/group__RealFFT.html#:~:text=The%20CMSIS%20DSP%20library%20includes,algorithms%20of%20the%20same%20length">CMSIS-DSP: Real FFT Functions</a>) (<a href="https://arm-software.github.io/CMSIS-DSP/main/group__RealFFT.html#:~:text=Floating,and%20%208">CMSIS-DSP: Real FFT Functions</a>). </p>
+<p><em>Key resources:</em><br />
+- <strong>CMSIS-DSP Documentation</strong> – The user manual (on ARM’s GitHub pages) details each FFT function and usage (<a href="https://arm-software.github.io/CMSIS-DSP/main/group__RealFFT.html#:~:text=Floating,and%20%208">CMSIS-DSP: Real FFT Functions</a>). It covers initialization (e.g. <code>arm_rfft_fast_init_f32</code>), input/output data formats, and optimized algorithms for real data (<a href="https://arm-software.github.io/CMSIS-DSP/main/group__RealFFT.html#:~:text=Floating,and%20%208">CMSIS-DSP: Real FFT Functions</a>) (<a href="https://arm-software.github.io/CMSIS-DSP/main/group__RealFFT.html#:~:text=domain,so%20N%20%2B%202%20floats">CMSIS-DSP: Real FFT Functions</a>). This is an <strong>authoritative reference</strong> for how to use these functions and what hardware features they exploit.<br />
+- <strong>CMSIS-DSP Example Code</strong> – There are many examples of using CMSIS-DSP FFT on microcontrollers (for instance, STM32 examples and application notes (<a href="https://home.fedevel.com/blog/stm32-fast-fourier-transform-cmsis-dsp-fft-phils-lab-111#:~:text=STM32%20Fast%20Fourier%20Transform%20,Full%20walkthrough%20and%20demo">STM32 Fast Fourier Transform (CMSIS DSP FFT) - Phil's Lab #111</a>)). These can be adapted to Pico 2. A community project by <em>jptrainor</em> benchmarked CMSIS-DSP on the original Pico, demonstrating how to integrate the library (in C/C++) and measure performance (<a href="https://github.com/jptrainor/cmsis-sandbox#:~:text=CMSIS,and%20fixed%20point%20data%20types">GitHub - jptrainor/cmsis-sandbox: Benchmarking CMSIS-DSP on Rasberry Pi Pico</a>) (<a href="https://github.com/jptrainor/cmsis-sandbox#:~:text=The%20FFT%20benchmark%20times%20the,DSP%20functions%20are">GitHub - jptrainor/cmsis-sandbox: Benchmarking CMSIS-DSP on Rasberry Pi Pico</a>). (On an M0+ Pico, float FFTs had to rely on software, but on the M33 Pico 2 the same code will use the hardware FPU for a big speedup.)  </p>
+<p><strong>KISS FFT (Pico FFT Library):</strong> Another option is the lightweight <strong>KISS FFT</strong> (“Keep It Simple FFT”) library, which is written in portable C. A community member created a Pico-oriented wrapper called <strong>pico_fft</strong> based on KISS FFT (<a href="https://github.com/Googool/pico_fft#:~:text=A%20lightweight%20and%20efficient%20wrapper,analysis%20and%20signal%20processing%20tasks">GitHub - Googool/pico_fft: A lightweight and efficient FFT (Fast Fourier Transform) library for the Raspberry Pi Pico, based on the KISS FFT library.</a>). It simplifies capturing ADC data and computing an FFT on the Pico. While KISS FFT isn’t as optimized as CMSIS-DSP, it’s easier to understand and has a small footprint. The pico_fft project includes <strong>documentation and examples</strong> of connecting an analog microphone to the Pico and performing an FFT on the samples (<a href="https://github.com/Googool/pico_fft#:~:text=Quickstart">GitHub - Googool/pico_fft: A lightweight and efficient FFT (Fast Fourier Transform) library for the Raspberry Pi Pico, based on the KISS FFT library.</a>). All examples (in C using the Pico SDK) have been tested, and they even provide a quick-start guide for hardware setup and code building (<a href="https://github.com/Googool/pico_fft#:~:text=Quickstart">GitHub - Googool/pico_fft: A lightweight and efficient FFT (Fast Fourier Transform) library for the Raspberry Pi Pico, based on the KISS FFT library.</a>) (<a href="https://github.com/Googool/pico_fft#:~:text=Follow%20the%20official%20Getting%20Started,download%20page%20for%20installation%20instructions">GitHub - Googool/pico_fft: A lightweight and efficient FFT (Fast Fourier Transform) library for the Raspberry Pi Pico, based on the KISS FFT library.</a>). This could be useful if you prefer a self-contained library. Keep in mind that on the RP2350, a KISS FFT (written in C) will still benefit from the M33’s speed and can use the FPU for float math (via the compiler) – but it won’t explicitly use SIMD DSP instructions unless manually optimized. </p>
+<p><strong>Performance notes:</strong> On the Pico 2, a well-optimized FFT is quite fast. For instance, Peter Hinch’s assembly FFT (discussed below) can compute a 1024-point real FFT in about 7 ms on a Pico 2 (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=Board%20Time%20%28ms%29%20Pyboard%201,97">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>). In comparison, the same on a classic Pico M0+ might take tens of milliseconds or more since it lacks the FPU (<a href="https://dsp.stackexchange.com/questions/96118/raspberry-pi-picorp2040-or-rp2350-asm-pio-micropython-for-fft-dsp#:~:text=For%20high">python - Raspberry Pi Pico(RP2040 or RP2350) ASM PIO microPython for FFT, DSP - Signal Processing Stack Exchange</a>) (<a href="https://dsp.stackexchange.com/questions/96118/raspberry-pi-picorp2040-or-rp2350-asm-pio-micropython-for-fft-dsp#:~:text=%2A%20The%20RP2040%20has%20high,core%20that%27ll%20suit%20you%20better">python - Raspberry Pi Pico(RP2040 or RP2350) ASM PIO microPython for FFT, DSP - Signal Processing Stack Exchange</a>). CMSIS-DSP’s routines should achieve similar performance to the assembly approach, as they are built to leverage the same hardware features. The CMSIS library also supports smaller FFT sizes efficiently (e.g. 256-point, 512-point), often using mixed-radix algorithms for speed. ARM’s benchmarks (in CMSIS docs) show orders of magnitude speedup vs. naive FFT implementations thanks to these optimizations (<a href="https://github.com/jptrainor/cmsis-sandbox#:~:text=CMSIS,and%20fixed%20point%20data%20types">GitHub - jptrainor/cmsis-sandbox: Benchmarking CMSIS-DSP on Rasberry Pi Pico</a>). </p>
+<h2 id="dual-core-audio-processing-examples">Dual-Core Audio Processing Examples</h2>
+<p>One advantage of the RP2350 (Pico 2) is its <strong>dual-core</strong> CPU, which you can use to parallelize tasks – ideal for real-time audio capture and FFT display. A great example is <em>Iwatake’s dual-core spectrum analyzer</em> project. It runs on the original Pico (RP2040) but demonstrates the concept well: <strong>Core0</strong> handles data acquisition from a microphone via ADC (using DMA) and driving an SPI display, while <strong>Core1</strong> performs the FFT calculations on the incoming data stream (<a href="https://www.hackster.io/news/iwatake-turns-the-raspberry-pi-pico-into-a-dual-core-fft-calculating-live-spectrum-analyzer-0245bbdd0699#:~:text=The%20project%2C%20written%20in%20C%2B%2B,screen%20as%20a%20live%20spectrum">Iwatake Turns the Raspberry Pi Pico Into a Dual-Core, FFT-Calculating Live Spectrum Analyzer - Hackster.io</a>). This way, the heavy math on Core1 doesn’t stall sampling or screen updates on Core0. The project was written in C++ using the official Pico SDK, and Iwatake has released the full source code on GitHub (<a href="https://www.hackster.io/news/iwatake-turns-the-raspberry-pi-pico-into-a-dual-core-fft-calculating-live-spectrum-analyzer-0245bbdd0699#:~:text=The%20project%2C%20written%20in%20C%2B%2B,screen%20as%20a%20live%20spectrum">Iwatake Turns the Raspberry Pi Pico Into a Dual-Core, FFT-Calculating Live Spectrum Analyzer - Hackster.io</a>) (<a href="https://www.hackster.io/news/iwatake-turns-the-raspberry-pi-pico-into-a-dual-core-fft-calculating-live-spectrum-analyzer-0245bbdd0699#:~:text=The%20project%27s%20source%20code%20is,0%20license">Iwatake Turns the Raspberry Pi Pico Into a Dual-Core, FFT-Calculating Live Spectrum Analyzer - Hackster.io</a>). (The code uses ADC + DMA to fill buffers, triggers an IRQ or flag when a buffer is ready, then Core1 processes the buffer with an FFT and sends the result to Core0 for display.) This design achieved a functional real-time spectrum display, although the author noted a occasional bug causing freezes (likely a synchronization issue) (<a href="https://www.hackster.io/news/iwatake-turns-the-raspberry-pi-pico-into-a-dual-core-fft-calculating-live-spectrum-analyzer-0245bbdd0699#:~:text=display%2C%20reading%20the%20ADC%20input%2C,screen%20as%20a%20live%20spectrum">Iwatake Turns the Raspberry Pi Pico Into a Dual-Core, FFT-Calculating Live Spectrum Analyzer - Hackster.io</a>). It’s a useful reference for structuring dual-core tasks and using the <strong>Pico’s multicore FIFO</strong> or interrupts to communicate between cores.</p>
+<p>Another community example is a project by <strong>Van Hunter Adams</strong> at Cornell: <em>Realtime Audio FFT to VGA on RP2040</em>. While it ran on a single-core (RP2040) with heavy use of DMA and PIO, it illustrates high-speed ADC capture (10 kHz) with DMA, and performing a 1024-point fixed-point FFT on the fly (<a href="https://vanhunteradams.com/Pico/VGA/FFT.html#:~:text=The%20code%20is%20structured%20as,3%20writes%20to%20the%20control">FFT</a>) (<a href="https://vanhunteradams.com/Pico/VGA/FFT.html#:~:text=of%20samples%20is%20being%20gathered%2C,machine%20described%20at%20length%20here">FFT</a>). On the Pico 2, one could adapt this idea and split the work across cores for even better throughput (e.g., Core0 managing continuous DMA ADC sampling, Core1 doing the FFT and sending results to a VGA or LCD driver). The code and write-up for that project are available on Adams’s site (<a href="https://vanhunteradams.com/Pico/VGA/FFT.html#:~:text=The%20code%20is%20structured%20as,3%20writes%20to%20the%20control">FFT</a>) (<a href="https://vanhunteradams.com/Pico/VGA/FFT.html#:~:text=of%20samples%20is%20being%20gathered%2C,machine%20described%20at%20length%20here">FFT</a>) and could serve as a starting point for handling real-time data streams.</p>
+<p>For a more hobbyist-friendly approach, there’s an <strong>Arduino-based</strong> spectrum analyzer for RP2040 by <em>Bodmer</em> that uses one core but cleverly combines DMA and an SPI TFT update. It samples ADC at ~14 kHz, computes an FFT (64–512 points), and draws the spectrum on a 320x240 TFT. The code uses the <strong>Earle Philhower Arduino core</strong> (which has built-in support for the RP2040) and likely leverages the CMSIS-DSP library under the hood (the Arduino <code>mbed_rp2040</code> core includes CMSIS-DSP) or a simple FFT routine. It achieves about 54 FPS for a 256-point FFT visualization (and up to 81 FPS for 64-point) by using DMA for sampling and fast SPI for drawing (<a href="https://github.com/Bodmer/ADC_DMA_FFT#:~:text=Screen%20update%20rate%20varies%20with,5MHz%20SPI%20clock">GitHub - Bodmer/ADC_DMA_FFT: RP2040: sample ADC, run FFT, display on TFT</a>) (<a href="https://github.com/Bodmer/ADC_DMA_FFT#:~:text=,21%20fps">GitHub - Bodmer/ADC_DMA_FFT: RP2040: sample ADC, run FFT, display on TFT</a>). The source is available on GitHub as “ADC_DMA_FFT” with documentation in the README (<a href="https://github.com/Bodmer/ADC_DMA_FFT#:~:text=This%20sketch%20is%20for%20RP2040,frequency%20spectrum%20from%20the%20signal">GitHub - Bodmer/ADC_DMA_FFT: RP2040: sample ADC, run FFT, display on TFT</a>) (<a href="https://github.com/Bodmer/ADC_DMA_FFT#:~:text=Screen%20update%20rate%20varies%20with,5MHz%20SPI%20clock">GitHub - Bodmer/ADC_DMA_FFT: RP2040: sample ADC, run FFT, display on TFT</a>). While this was tested on RP2040, the same code on an RP2350 could be tweaked to use both cores or simply enjoy the extra performance headroom (e.g. to increase FFT size or sample rate). It’s a good, well-documented reference for implementing an end-to-end audio FFT pipeline on the Pico family.</p>
+<p><strong>Key takeaways for dual-core design:</strong> Use DMA to offload data movement (e.g. ADC to memory), use one core exclusively for I/O (sensor reads, drawing to display) and the other for computation, and use thread-safe queues or interrupts to hand off data between cores. The Pico SDK provides <code>multicore_fifo_push</code>/<code>pop</code> functions and even higher-level primitives to coordinate the two cores. In FreeRTOS or other RTOS environments, you could assign tasks to cores and use mutexes/queues. The examples above show that a dual-core Pico can comfortably handle real-time audio FFT at audio-rate sampling (8–44 kHz) and update a display, especially when each core’s workload is optimized.</p>
+<h2 id="micropython-and-assembly-integration">MicroPython and Assembly Integration</h2>
+<p><strong>MicroPython</strong> on the Pico 2 lets you write high-level code, but Python by itself is too slow for real-time FFT on microcontrollers. The good news is MicroPython supports calling <strong>assembly-optimized routines</strong> for performance-critical parts. There are a few ways to do this:</p>
+<ul>
+<li>
+<p><strong>Inline ARM Thumb Assembly:</strong> MicroPython has an inline assembler for ARM Cortex-M. By decorating a function with <code>@micropython.asm_thumb</code>, you can write pure assembly instructions that MicroPython will assemble and execute natively (<a href="https://smist08.wordpress.com/2022/02/18/adding-assembly-language-to-micropython/#:~:text=Assembly%20Language%20in%20MicroPython">Adding Assembly Language to MicroPython | Stephen Smith's Blog</a>) (<a href="https://smist08.wordpress.com/2022/02/18/adding-assembly-language-to-micropython/#:~:text=%40micropython,r0%2C%20r1">Adding Assembly Language to MicroPython | Stephen Smith's Blog</a>). You can pass a few arguments in registers (r0–r3) and use any ARMv7E-M Thumb-2 instructions – including those for floating point on M33 (MicroPython’s assembler includes opcodes like <code>vadd.f32</code>, etc., which will use the FPU) (<a href="https://smist08.wordpress.com/2022/02/18/adding-assembly-language-to-micropython/#:~:text=Notice%20how%20the%20Assembly%20Language,is%20quite%20good%20and%20available">Adding Assembly Language to MicroPython | Stephen Smith's Blog</a>). This is ideal for writing a custom FFT inner loop or other DSP routines. The official docs and tutorials (e.g. Damien George’s hints, or Stephen Smith’s blog (<a href="https://smist08.wordpress.com/2022/02/18/adding-assembly-language-to-micropython/#:~:text=Assembly%20Language%20in%20MicroPython">Adding Assembly Language to MicroPython | Stephen Smith's Blog</a>)) cover how to structure these functions. Keep in mind you must manage registers and follow the MicroPython calling convention, but you can mix Python and assembly seamlessly (call the asm function from Python with normal arguments). </p>
+</li>
+<li>
+<p><strong>FFI / Native Modules:</strong> Another approach is to compile C or assembly code as a native module and import it in MicroPython. MicroPython’s build system allows adding C extensions that become importable as Python modules. For example, one could compile the CMSIS-DSP library (or just the needed FFT function) into the firmware and expose a Python-callable function. This requires customizing the firmware build, but there are community discussions and examples on doing this (for instance, wrapping CMSIS-DSP functions in a MicroPython module) (<a href="https://github.com/orgs/micropython/discussions/10200#:~:text=About%20add%20it%20to%20ulab%2C,specific%20modcmsis%20will%20be%20better">CMSIS DSP and NN micropython wrappers · micropython · Discussion #10200 · GitHub</a>). There isn’t an off-the-shelf MicroPython “numpy” with DSP yet (though it’s been contemplated (<a href="https://forum.micropython.org/viewtopic.php?t=384#:~:text=,in%20Matrix%20%26%20Filter%20functionality">DSP CMSIS - MicroPython Forum (Archive)</a>) (<a href="https://forum.micropython.org/viewtopic.php?t=384#:~:text=It%20would%20be%20great%20to,it%20with%20normal%20Python%20functions">DSP CMSIS - MicroPython Forum (Archive)</a>)), but the <strong>ulab</strong> module is a notable alternative. <strong>ulab</strong> is a NumPy-like module for MicroPython (written in C) that provides vectorized operations and an FFT routine (<code>ulab.numpy.fft.fft</code>) in a Pythonic way (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=The%20principal%20purpose%20of%20this,implemented%20as%20a%20C%20module">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>). It’s not specific to the RP2350, but it’s optimized C code, so it runs much faster than Python loops and can handle moderate-sized FFTs. If using MicroPython, you might consider using ulab’s FFT for simplicity – it won’t explicitly use the M33 DSP instructions, but in C it will still be fast, and you avoid writing assembly by hand.</p>
+</li>
+<li>
+<p><strong>Peter Hinch’s Assembly FFT Library:</strong> For an <strong>authoritative, ready-made solution</strong>, <strong>Peter Hinch’s</strong> <code>micropython-fourier</code> library is highly recommended. This is a MicroPython library implementing a <strong>fast FFT</strong> (actually a DFT class) almost entirely in ARM assembly, specifically tuned for boards with an FPU (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=The%20,on%20the%20various%20Pyboard%20options">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>). It was written for the Pyboard (STM32F7) and has been updated to support the Pico 2’s M33 core. The library computes single-precision FFTs in-place, uses precomputed twiddle factors, and does <strong>no heap allocation</strong>, meaning it can even be called in an interrupt handler for real-time use (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=The%20,on%20the%20various%20Pyboard%20options">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>). It also offers conveniences like window functions and conversion to magnitude or dB. According to the author’s benchmarks, a 1024-point FFT takes ~6.97 ms on the Pico 2 (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=Board%20Time%20%28ms%29%20Pyboard%201,97">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>) (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=At%20one%20time%20a%201024,It%20costs%20%C2%A328">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>). Even a 256-point FFT would be only a fraction of that (the Reddit post below measured ~17 ms for 256-point including overhead in Python) (<a href="https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/#:~:text=Here%20is%20a%20demo%20of,at%208K%20samples%20per%20second">FFT sound spectrum analyzer running on a Raspberry Pi Pico 2. : r/raspberrypipico</a>). Hinch’s code uses the M33’s <strong>FPU</strong> for arithmetic, so it is floating-point based (more dynamic range than fixed-point). The repository includes documentation (README with usage notes) and a test script. To use it, you can copy the <code>.py</code> files to your Pico and import the <code>DFT</code> class in MicroPython. This gives you an object where you can populate data and run <code>fft()</code> to get the spectrum. (If you want to integrate with live ADC data, you’d sample into a Python array or <code>array.array('f')</code>, then call the assembly routine to transform it.)</p>
+<p><em>Reference:</em> <em>“Fast Fourier transform in MicroPython’s inline ARM assembler”</em> by Peter Hinch (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=Single%20precision%20FFT%20written%20in,ARM%20assembler">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>) (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=The%20,on%20the%20various%20Pyboard%20options">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>) – This is the library’s README, which explains the design and usage. It explicitly notes it <em>“requires an ARM platform with FPU supporting Arm Thumb V7 assembler (e.g. Pyboard D, Pico 2)”</em> (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=V0,version%20dated%202018%20or%20later">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>). In other words, it’s tailored for the Cortex-M4/M7/M33 class of devices. The README also provides a <strong>performance section</strong> comparing runtime on different boards (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=Board%20Time%20%28ms%29%20Pyboard%201,97">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>), confirming the Pico 2’s advantage thanks to its 2× clock and FPU/DSP support. </p>
+</li>
+<li>
+<p><strong>MicroPython Dual-Core:</strong> It’s worth noting that MicroPython on RP2040 currently runs on a single core by default. Using the second core is non-trivial in MicroPython (there is no built-in thread or task offload to the second core in the high-level API as of now). Advanced users have experimented with launching assembly code on the second core (via the <code>machine.mem</code> and writing to the second core’s start address), but this is complex. If dual-core operation is a requirement, writing that portion in C (and maybe invoking it via MicroPython’s FFI) or using an RTOS might be easier. However, given the Pico 2’s speed, many audio FFT applications can be done on one core in MicroPython if the heavy math is in optimized assembly. For instance, user Dan McCreary demonstrated a <strong>MicroPython spectrum analyzer</strong> on the Pico 2: using an I2S microphone at 8 kHz, a 256-point FFT in assembly (~17 ms), and updating an OLED display (<a href="https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/#:~:text=Here%20is%20a%20demo%20of,at%208K%20samples%20per%20second">FFT sound spectrum analyzer running on a Raspberry Pi Pico 2. : r/raspberrypipico</a>) (<a href="https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/#:~:text=,6">FFT sound spectrum analyzer running on a Raspberry Pi Pico 2. : r/raspberrypipico</a>). His results showed the FFT using only ~22% of the frame time (with the display update taking more time), so the optimized routine left plenty of CPU headroom (<a href="https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/#:~:text=,7">FFT sound spectrum analyzer running on a Raspberry Pi Pico 2. : r/raspberrypipico</a>). This suggests that offloading the math to assembly was enough to meet real-time requirements without needing the second core in MicroPython. Documentation for his project is available on his “Learning MicroPython” site, and it specifically credits Peter Hinch’s FFT library for the speedup (<a href="https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/#:~:text=Here%20is%20a%20demo%20of,at%208K%20samples%20per%20second">FFT sound spectrum analyzer running on a Raspberry Pi Pico 2. : r/raspberrypipico</a>) (<a href="https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/#:~:text=,6">FFT sound spectrum analyzer running on a Raspberry Pi Pico 2. : r/raspberrypipico</a>). </p>
+</li>
+</ul>
+<h2 id="conclusion-and-further-resources">Conclusion and Further Resources</h2>
+<p>In summary, the Raspberry Pi Pico 2’s RP2350 chip brings substantial DSP capability through its dual M33 cores with FPU/DSP extensions. To exploit this for fast FFTs: </p>
+<ul>
+<li><strong>Use optimized libraries</strong> like <em>CMSIS-DSP</em> for C/C++ projects – these give you proven, assembly-tuned FFT functions that harness the hardware (floating or fixed-point) (<a href="https://github.com/jptrainor/cmsis-sandbox#:~:text=CMSIS,and%20fixed%20point%20data%20types">GitHub - jptrainor/cmsis-sandbox: Benchmarking CMSIS-DSP on Rasberry Pi Pico</a>) (<a href="https://github.com/jptrainor/cmsis-sandbox#:~:text=The%20FFT%20benchmark%20times%20the,DSP%20functions%20are">GitHub - jptrainor/cmsis-sandbox: Benchmarking CMSIS-DSP on Rasberry Pi Pico</a>). The official ARM docs and Raspberry Pi’s examples (e.g. CMSIS integration in the SDK (<a href="https://www.raspberrypi.com/news/new-rp2040-cmsis-pack/#:~:text=New%20RP2040%20CMSIS%20Pack%20,RP2040%20into%20the%20Arm%20ecosystem">New RP2040 CMSIS Pack - Raspberry Pi</a>) or Arduino’s CMSIS-DSP package) can guide you through setup. </li>
+<li><strong>Study real-time examples</strong> (like Iwatake’s dual-core analyzer (<a href="https://www.hackster.io/news/iwatake-turns-the-raspberry-pi-pico-into-a-dual-core-fft-calculating-live-spectrum-analyzer-0245bbdd0699#:~:text=The%20project%2C%20written%20in%20C%2B%2B,screen%20as%20a%20live%20spectrum">Iwatake Turns the Raspberry Pi Pico Into a Dual-Core, FFT-Calculating Live Spectrum Analyzer - Hackster.io</a>) or Bodmer’s DMA FFT display (<a href="https://github.com/Bodmer/ADC_DMA_FFT#:~:text=Screen%20update%20rate%20varies%20with,5MHz%20SPI%20clock">GitHub - Bodmer/ADC_DMA_FFT: RP2040: sample ADC, run FFT, display on TFT</a>)) to understand how to pipeline data acquisition and processing. They illustrate techniques like double-buffering ADC data with DMA, using one core per task, and optimizing I/O throughput – all relevant to high-performance audio applications on the Pico 2. </li>
+<li><strong>Leverage MicroPython’s extensibility</strong> if you prefer Python at a high level. MicroPython by itself is not fast enough for DSP, but by injecting assembly (either inline or via a library) you can achieve performance close to a C implementation. Peter Hinch’s FFT library is an excellent, well-documented starting point for MicroPython (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=The%20,on%20the%20various%20Pyboard%20options">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>) (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=Board%20Time%20%28ms%29%20Pyboard%201,97">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>). Additionally, the <code>ulab</code> module can handle many numeric tasks in C for you, including FFT, which might simplify development for prototyping.</li>
+</ul>
+<p>By combining these resources, you can capture audio in real-time, compute an FFT with minimal latency, and display the spectrum – fully utilizing the <strong>Pico 2’s hardware acceleration</strong>. Be sure to refer to the official Raspberry Pi Pico C/C++ SDK documentation for details on using the ADC, DMA, PIO, and multicore features, as those will be the backbone for any high-speed real-time processing on this platform. With the right approach, the tiny $5 Pico 2 can perform serious signal processing tasks that were previously possible only on much more expensive or power-hungry systems.</p>
+<p><strong>Sources:</strong> Documentation and code from Raspberry Pi Foundation and ARM, and community projects and libraries on GitHub: RP2350 hardware specs (<a href="https://smist08.wordpress.com/2024/08/30/introducing-the-rp2350/#:~:text=The%20most%20interesting%20part%20to,V%20cores">Introducing the RP2350 | Stephen Smith's Blog</a>), ARM CMSIS-DSP library API (<a href="https://github.com/jptrainor/cmsis-sandbox#:~:text=CMSIS,and%20fixed%20point%20data%20types">GitHub - jptrainor/cmsis-sandbox: Benchmarking CMSIS-DSP on Rasberry Pi Pico</a>) (<a href="https://github.com/jptrainor/cmsis-sandbox#:~:text=The%20FFT%20benchmark%20times%20the,DSP%20functions%20are">GitHub - jptrainor/cmsis-sandbox: Benchmarking CMSIS-DSP on Rasberry Pi Pico</a>), dual-core FFT example (iwatake) (<a href="https://www.hackster.io/news/iwatake-turns-the-raspberry-pi-pico-into-a-dual-core-fft-calculating-live-spectrum-analyzer-0245bbdd0699#:~:text=The%20project%2C%20written%20in%20C%2B%2B,screen%20as%20a%20live%20spectrum">Iwatake Turns the Raspberry Pi Pico Into a Dual-Core, FFT-Calculating Live Spectrum Analyzer - Hackster.io</a>), MicroPython assembly FFT by Peter Hinch (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=The%20,on%20the%20various%20Pyboard%20options">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>) (<a href="https://github.com/peterhinch/micropython-fourier#:~:text=Board%20Time%20%28ms%29%20Pyboard%201,97">GitHub - peterhinch/micropython-fourier: Fast Fourier transform in MicroPython's inline ARM assembler.</a>), and others as cited above.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href=".." class="md-footer__link md-footer__link--prev" aria-label="Previous: Home">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Home
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../glossary/" class="md-footer__link md-footer__link--next" aria-label="Next: Glossary">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Glossary
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
+    
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["content.code.copy", "navigation.expand", "navigation.path", "navigation.prune", "navigation.indexes", "toc.follow", "navigation.top", "navigation.footer", "content.action.edit"], "search": "../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.83f73b43.min.js"></script>
+      
+        <script src="../js/extra.js"></script>
+      
+    
+  </body>
+</html>
