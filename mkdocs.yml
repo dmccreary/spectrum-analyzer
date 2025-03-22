@@ -10,6 +10,11 @@ nav:
   - Home: index.md
   - About: about.md
   - Research: research.md
+  - Setup:
+    - Introduction: setup/index.md
+    - Hardware: setup/hardware.md
+    - Desktop: setup/desktop.md
+    - Connections: setup/connections.md
   - Lessons: 
       - Introduction: lessons/index.md
       - Test Sound: lessons/01-test-incoming-sound.md

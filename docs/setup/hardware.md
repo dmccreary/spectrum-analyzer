@@ -14,4 +14,8 @@ We use a 2.42" OLED display with a SSD1306 driver.
 
 If you're prototyping on a breadboard or using standard jumper wires, stick with 4–8 MHz to ensure signal integrity and reduce data corruption.
 
+## Breadboard
+
+[Breadboards](https://dmccreary.github.io/learning-micropython/getting-started/02-breadboards/)
+
 
