@@ -23,7 +23,7 @@ nav:
       - Future Work: lessons/10-future-improvements.md
   - MicroSims: 
     - Introduction: sims/index.md
-    - Signal Generator: sims/signal-generator/index.md
+    - Tone Generator: sims/tone-generator/index.md
   - Feedback: feedback.md
   - License: license.md
   - Glossary: glossary.md
