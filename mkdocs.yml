@@ -27,6 +27,7 @@ nav:
       - Adding Timers: lessons/08-adding-timers.md
       - Assembler FFT: lessons/09-assembler-function.md
       - Future Work: lessons/10-future-improvements.md
+      - DSP Instructions: lessons/50-dsp-instructions.md
   - MicroSims: 
     - Introduction: sims/index.md
     - Base and Treble: sims/base-and-treble.md
