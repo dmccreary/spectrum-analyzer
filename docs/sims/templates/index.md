@@ -14,7 +14,7 @@
 ## Sample iframe
 
 ```html
-<iframe src="https://dmccreary.github.io/microsims/sims/name/main.html" height="400"  scrolling="no"></iframe>
+<iframe src="https://dmccreary.github.io/microsims/sims/spectrum-analyzer/main.html" height="400"  scrolling="no"></iframe>
 ```
 
 ## About this MicroSim
