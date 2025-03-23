@@ -28,81 +28,99 @@ The code is functional but could potentially be optimized further to take advant
 Based on my analysis of the `dft.py` code, here are specific optimizations to improve FFT performance on the RP2350 with ARMv7-M Thumb and FPv5-SP:
 
 1. **Use SIMD operations for vector processing**:
-   - Replace sequential floating-point operations with SIMD instructions where possible
-   - For example, use vector load/store instructions to process multiple elements at once
+
+- Replace sequential floating-point operations with SIMD instructions where possible
+- For example, use vector load/store instructions to process multiple elements at once
 
 2. **Optimize memory access patterns**:
-   - Rearrange data structures to improve cache locality
-   - Use pre-fetching instructions to reduce cache misses
-   - Align data to cache line boundaries
-   - Use `pld` (preload) instructions before accessing memory
+
+- Rearrange data structures to improve cache locality
+- Use pre-fetching instructions to reduce cache misses
+- Align data to cache line boundaries
+- Use `pld` (preload) instructions before accessing memory
 
 3. **Loop optimizations**:
-   - Unroll critical loops (especially in the `DOMATHS` and FFT butterfly sections)
-   - Use fewer branches in tight loops to reduce branch prediction failures
+
+- Unroll critical loops (especially in the `DOMATHS` and FFT butterfly sections)
+- Use fewer branches in tight loops to reduce branch prediction failures
 
 4. **Leverage FPv5-SP specific instructions**:
-   - Use fused multiply-add operations (`vfma`, `vfms`) instead of separate multiply and add
-   - These instructions can complete in a single cycle on FPv5-SP
+
+- Use fused multiply-add operations (`vfma`, `vfms`) instead of separate multiply and add
+- These instructions can complete in a single cycle on FPv5-SP
 
 5. **Register utilization improvements**:
-   - Keep more intermediate values in FPU registers to reduce load/store operations
-   - The current implementation frequently moves values between memory and registers
-   - Rework register allocation to minimize register spilling
+
+- Keep more intermediate values in FPU registers to reduce load/store operations
+- The current implementation frequently moves values between memory and registers
+- Rework register allocation to minimize register spilling
 
 6. **Algorithm-specific optimizations**:
-   - Implement radix-4 or split-radix FFT instead of radix-2
-   - Radix-4 requires 25% fewer complex multiplications than radix-2
-   - Consider implementing a mixed-radix approach for non-power-of-2 lengths
+
+- Implement radix-4 or split-radix FFT instead of radix-2
+- Radix-4 requires 25% fewer complex multiplications than radix-2
+- Consider implementing a mixed-radix approach for non-power-of-2 lengths
 
 7. **Reduce function call overhead**:
-   - Inline small assembler functions like `CADD`, `CSUB`, and `CMUL` at their call sites
-   - This eliminates the overhead of pushing/popping registers and branch instructions
+
+- Inline small assembler functions like `CADD`, `CSUB`, and `CMUL` at their call sites
+- This eliminates the overhead of pushing/popping registers and branch instructions
 
 8. **Specialized scaling approach**:
-   - Defer scaling operations until the end of the transform
-   - Apply scaling only where necessary, not to every element
+
+- Defer scaling operations until the end of the transform
+- Apply scaling only where necessary, not to every element
 
 9. **Dual-issue optimization**:
-   - Rearrange instructions to improve dual-issue performance on the Cortex-M7
-   - Interleave FPU and integer operations where possible
+
+- Rearrange instructions to improve dual-issue performance on the Cortex-M7
+- Interleave FPU and integer operations where possible
 
 10. **Reduce twiddle factor computation overhead**:
-    - Precompute more twiddle factors
-    - Consider storing them in a more efficient format
+
+- Precompute more twiddle factors
+- Consider storing them in a more efficient format
 
 These optimizations could significantly improve the FFT performance, potentially getting closer to the theoretical limits of the hardware. The most substantial gains would likely come from SIMD operations, better memory access patterns, and the use of fused multiply-add instructions.
+
+## Lowest Risk Performance Speedups
 
 !!! prompt
     Of all these 10 possible changes, which ones would have the lowest risk of breaking the existing code that we could try.  We would want to do timings on both versions to test to see if the changes improved the performance.
 
 Looking at the possible optimizations, I'd recommend these lower-risk changes that could improve performance while minimizing the chance of breaking existing functionality:
 
-1.  **Use fused multiply-add operations** - Replacing separate multiply and add operations with `vfma` and `vfms` instructions is relatively straightforward and low-risk. For example, in the `CMUL` function, you could replace:
+### 1.  **Use fused multiply-add operations** - Replacing separate multiply and add operations with `vfma` and `vfms` instructions is relatively straightforward and low-risk. For example, in the `CMUL` function, you could replace:
 
-    ```
-    vmul(s10, s12, s14)     # s10 = ax
-    vmul(s9, s13, s15)      # s9  = by
-    vsub(s10, s10, s9)      # s10 = ax - by
+```
+vmul(s10, s12, s14)     # s10 = ax
+vmul(s9, s13, s15)      # s9  = by
+vsub(s10, s10, s9)      # s10 = ax - by
+```
 
-    ```
+ with something like:
 
-    with something like:
+```
+vmul(s10, s12, s14)     # s10 = ax
+vneg(s9, s13)           # s9 = -ay (if needed)
+vfms(s10, s13, s15)     # s10 = ax - (by)
+```
 
-    ```
-    vmul(s10, s12, s14)     # s10 = ax
-    vneg(s9, s13)           # s9 = -ay (if needed)
-    vfms(s10, s13, s15)     # s10 = ax - (by)
+### 2.  **Loop unrolling**
 
-    ```
+Identify the most performance-critical loops (like the butterfly operations) and manually unroll them. This is a localized change that's unlikely to break functionality while reducing branch overhead.
 
-2.  **Loop unrolling** - Identify the most performance-critical loops (like the butterfly operations) and manually unroll them. This is a localized change that's unlikely to break functionality while reducing branch overhead.
+### 3.  **Register utilization improvements**
 
-3.  **Register utilization improvements** - Reducing the number of loads and stores by keeping values in registers longer is relatively safe. Look for patterns where values are stored and then immediately reloaded.
+Reducing the number of loads and stores by keeping values in registers longer is relatively safe. Look for patterns where values are stored and then immediately reloaded.
 
-4.  **Minimize function call overhead** - The CMUL, CADD, and CSUB functions are called frequently during the transform. Inlining these at their call sites would eliminate function call overhead without changing their functionality.
+### 4.  **Minimize function call overhead**
 
-5.  **Memory alignment improvements** - Ensuring data is properly aligned for the FPU can improve performance without changing the algorithm. This might involve adjusting how arrays are allocated.
+The CMUL, CADD, and CSUB functions are called frequently during the transform. Inlining these at their call sites would eliminate function call overhead without changing their functionality.
+
+### 5.  **Memory alignment improvements**
+
+Ensuring data is properly aligned for the FPU can improve performance without changing the algorithm. This might involve adjusting how arrays are allocated.
 
 To properly test these changes:
 
@@ -139,7 +157,6 @@ def generate_sine(length, frequency, sample_rate=1.0):
         t = i / sample_rate
         data[i] = math.sin(2 * math.pi * frequency * t)
     return data
-
 ```
 
 ### Generating Multiple Frequencies
