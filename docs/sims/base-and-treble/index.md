@@ -1,21 +1,20 @@
 # Base and Treble Amplifier Controls
 
-<iframe src="main.html" width="470" height="270" scrolling="no" style="overflow: hidden;"></iframe>
+<iframe src="main.html" height="360" scrolling="no" style="overflow: hidden;"></iframe>
 
 ![Base and Treble Image](./base-and-treble.png)
 
 [Run the Base and Treble MicroSim](./base-and-treble.html){ .md-button .md-button--primary }
-[Edit the Base and Treble MicroSim](https://editor.p5js.org/dmccreary/sketches/j1ND7Tl4a)
+[Edit the Base and Treble MicroSim](https://editor.p5js.org/dmccreary/sketches/88v2qo-DX)
 
-```linenums="0"
-I would like to create a p5.js simulation of the frequency
-response of an old classic amplifier with base and treble knobs.
-Instead of knobs, use two sliders at the bottom of the canvas,
-one for base and one for treble.
-The sliders should start out in the middle.
+!!! prompt
+  I would like to create a p5.js simulation of the frequency
+  response of an old classic amplifier with base and treble knobs.
+  Instead of knobs, use two sliders at the bottom of the canvas,
+  one for base and one for treble.
+  The sliders should start out in the middle.
 
-Use the following p5.js template for placement of the slider controls.
-```
+  Use the width-responsive.js MicroSim rules.
 
 ```javascript
 // region drawing parameters
