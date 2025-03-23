@@ -15,10 +15,10 @@
         <link rel="canonical" href="https://dmccreary.github.io/spectrum-analyzer/sims/base-and-treble/">
       
       
-        <link rel="prev" href="../fft-butterfly/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../templates/">
+        <link rel="next" href="../tone-generator/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +26,7 @@
     
     
       
-        <title>Base and Treble Amplifier Controls - Spectrum Analyzer</title>
+        <title>Base and Treble - Spectrum Analyzer</title>
       
     
     
@@ -63,7 +63,7 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="Base and Treble Amplifier Controls - Spectrum Analyzer" >
+        <meta  property="og:title"  content="Base and Treble - Spectrum Analyzer" >
       
         <meta  property="og:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
       
@@ -79,7 +79,7 @@
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="Base and Treble Amplifier Controls - Spectrum Analyzer" >
+        <meta  name="twitter:title"  content="Base and Treble - Spectrum Analyzer" >
       
         <meta  name="twitter:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
       
@@ -139,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Base and Treble Amplifier Controls
+              Base and Treble
             
           </span>
         </div>
@@ -831,10 +831,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../base-and-treble.md" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Base and Treble
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -843,6 +863,44 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Response
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refinement-of-placement-of-sliders" class="md-nav__link">
+    <span class="md-ellipsis">
+      Refinement of Placement of Sliders
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -915,85 +973,6 @@
                 
   
   
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Base and Treble Amplifier Controls
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Base and Treble Amplifier Controls
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#response" class="md-nav__link">
-    <span class="md-ellipsis">
-      Response
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refinement-of-placement-of-sliders" class="md-nav__link">
-    <span class="md-ellipsis">
-      Refinement of Placement of Sliders
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
   
   
     <li class="md-nav__item">
@@ -1001,7 +980,7 @@
         
   
   <span class="md-ellipsis">
-    MicroSim Template
+    Templates
   </span>
   
 
@@ -1201,19 +1180,20 @@
 
 
 <h1 id="base-and-treble-amplifier-controls">Base and Treble Amplifier Controls</h1>
-<iframe src="main.html" width="470" height="270" scrolling="no" style="overflow: hidden;"></iframe>
+<iframe src="main.html" height="360" scrolling="no" style="overflow: hidden;"></iframe>
 
 <p><img alt="Base and Treble Image" src="base-and-treble.png" /></p>
-<p><a class="md-button md-button--primary" href="base-and-treble.html">Run the Base and Treble MicroSim</a>
-<a href="https://editor.p5js.org/dmccreary/sketches/j1ND7Tl4a">Edit the Base and Treble MicroSim</a></p>
-<div class="highlight"><pre><span></span><code>I would like to create a p5.js simulation of the frequency
-response of an old classic amplifier with base and treble knobs.
-Instead of knobs, use two sliders at the bottom of the canvas,
-one for base and one for treble.
-The sliders should start out in the middle.
-
-Use the following p5.js template for placement of the slider controls.
-</code></pre></div>
+<p><a class="md-button md-button--primary" href="./base-and-treble.html">Run the Base and Treble MicroSim</a>
+<a href="https://editor.p5js.org/dmccreary/sketches/88v2qo-DX">Edit the Base and Treble MicroSim</a></p>
+<div class="admonition prompt">
+<p class="admonition-title">Prompt</p>
+</div>
+<p>I would like to create a p5.js simulation of the frequency
+  response of an old classic amplifier with base and treble knobs.
+  Instead of knobs, use two sliders at the bottom of the canvas,
+  one for base and one for treble.
+  The sliders should start out in the middle.</p>
+<p>Use the width-responsive.js MicroSim rules.</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
 <span class="normal"> 2</span>
 <span class="normal"> 3</span>
