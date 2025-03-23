@@ -18,11 +18,7 @@ In this project, we are implementing FFT on the Pico 2 microcontrollers, particu
 
 The name "butterfly" comes from the shape of the data flow diagram that represents the computation:
 
-```
-Input A ──►──┐       ┌──► Output A'
-             ×       ×
-Input B ──►──┘       └──► Output B'
-```
+<iframe src="../sims/fft-butterfly/main.html" height="550"  scrolling="no"></iframe>
 
 In this operation, two input values are combined to create two output values. Each butterfly combines elements that are a certain distance apart in the array, and this distance (called the "stride") changes as the algorithm progresses.
 
