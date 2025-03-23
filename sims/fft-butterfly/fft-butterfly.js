@@ -112,12 +112,25 @@ function buildStages() {
 
   // Create positions for each stage
   positions = new Array(maxStages + 1).fill(null).map(() => []);
+  
   // Calculate stage width to ensure even spacing across the canvas
-  let stageWidth = (canvasWidth - 2 * margin) / maxStages;
+  // This is the key change for responsiveness
+  let availableWidth = containerWidth - 2 * margin;
+  let stageWidth = availableWidth / maxStages;
   
   for (let s = 0; s <= maxStages; s++) {
     // Center each column of nodes
-    let x = margin - 50 + stageWidth * (s + 0.5);
+    let x = margin + stageWidth * s;
+    
+    // For the first stage, add a small offset to the left
+    if (s === 0) {
+      x += stageWidth * 0.2;
+    }
+    // For the last stage, subtract a small offset from the right
+    else if (s === maxStages) {
+      x -= stageWidth * 0.2;
+    }
+    
     // the height of the network
     let offsetY = (drawHeight - 2 * margin - 80) / (N - 1);
     // invert reorder[s]
@@ -191,6 +204,9 @@ function drawConnections() {
 
 // ===== Drawing the Data Nodes =====
 function drawNodes() {
+  // Calculate node size based on container width and FFT size
+  let nodeSize = calculateNodeSize();
+  
   // Draw nodes for all stages from 0..maxStages
   for (let s = 0; s <= maxStages; s++) {
     // If s > stage, draw them in lighter color to indicate they're not "active" yet
@@ -211,51 +227,67 @@ function drawNodes() {
         fill(220);
       }
       stroke('black');
-      // Make circles larger for smaller FFT sizes
-      let nodeSize;
-      switch(true) {
-        case (fftSize <= 4):
-          nodeSize = 36;
-          break;
-        case (fftSize <= 8):
-          nodeSize = 30;
-          break;
-        case (fftSize <= 16):
-          nodeSize = 18;
-          break;
-        default:
-          nodeSize = 12;
-      }
+      
+      // Draw the circle for this node
       circle(pt.x, pt.y, nodeSize);
-      // Draw index values inside nodes (except for fftSize=32)
-      let myTextSize;
-      if (fftSize < 32) {
-        
-        switch(true) {
-          case (fftSize <= 4):
-            myTextSize = 24;
-            break;
-          case (fftSize <= 8):
-            myTextSize = 20;
-            break;
-          case (fftSize <= 16):
-            myTextSize = 10;
-            break;
-          default:
-            myTextSize = 10;
-        }
-      }
       
       // Draw index values inside nodes (except for fftSize=32)
       if (fftSize < 32) {
-        textSize(myTextSize);
+        let fontSize = calculateTextSize();
         fill('black');
         textAlign(CENTER, CENTER);
+        textSize(fontSize);
         text(j, pt.x, pt.y);
       }
-      
     }
   }
+}
+
+// Calculate appropriate node size based on container width and FFT size
+function calculateNodeSize() {
+  // Base size calculation
+  let baseSize;
+  
+  switch(true) {
+    case (fftSize <= 4):
+      baseSize = 36;
+      break;
+    case (fftSize <= 8):
+      baseSize = 30;
+      break;
+    case (fftSize <= 16):
+      baseSize = 18;
+      break;
+    default:
+      baseSize = 12;
+  }
+  
+  // Scale based on container width
+  let scaleFactor = constrain(containerWidth / 800, 0.75, 1.25);
+  return baseSize * scaleFactor;
+}
+
+// Calculate appropriate text size based on container width and FFT size
+function calculateTextSize() {
+  let baseSize;
+  
+  switch(true) {
+    case (fftSize <= 4):
+      baseSize = 24;
+      break;
+    case (fftSize <= 8):
+      baseSize = 20;
+      break;
+    case (fftSize <= 16):
+      baseSize = 12;
+      break;
+    default:
+      baseSize = 10;
+  }
+  
+  // Scale based on container width
+  let scaleFactor = constrain(containerWidth / 800, 0.75, 1.25);
+  return baseSize * scaleFactor;
 }
 
 // ===== Left & Right Labels =====
@@ -296,14 +328,20 @@ function windowResized() {
   updateCanvasSize();
   resizeCanvas(containerWidth, containerHeight);
 
-  fftRadio.position(sliderLeftMargin, drawHeight + 10);
+  // Adjust control positions
+  let responsiveSliderLeftMargin = min(270, containerWidth * 0.6);
+  fftRadio.position(responsiveSliderLeftMargin, drawHeight + 10);
   startOrNextButton.position(10, drawHeight + 10);
-  resetButton.position(10, drawHeight + 45);
+  resetButton.position(100, drawHeight + 10);
+  
+  // Rebuild the stage positions to adapt to the new container width
+  buildStages();
+  
   redraw();
 }
 
 function updateCanvasSize() {
   const container = document.querySelector('main').getBoundingClientRect();
-  containerWidth = Math.floor(container.width);
+  containerWidth = Math.floor(container.width);  // Avoid fractional pixels
   canvasWidth = containerWidth;
 }
