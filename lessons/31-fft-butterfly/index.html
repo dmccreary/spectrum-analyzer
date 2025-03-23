@@ -12,13 +12,9 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/spectrum-analyzer/lessons/50-dsp-instructions/">
+        <link rel="canonical" href="https://dmccreary.github.io/spectrum-analyzer/lessons/31-fft-butterfly/">
       
       
-        <link rel="prev" href="../10-future-improvements/">
-      
-      
-        <link rel="next" href="../../sims/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -26,7 +22,7 @@
     
     
       
-        <title>DSP Instructions - Spectrum Analyzer</title>
+        <title>FFT Butterfly Operations on the Raspberry Pi Pico 2 - Spectrum Analyzer</title>
       
     
     
@@ -63,11 +59,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="DSP Instructions - Spectrum Analyzer" >
+        <meta  property="og:title"  content="FFT Butterfly Operations on the Raspberry Pi Pico 2 - Spectrum Analyzer" >
       
         <meta  property="og:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/lessons/50-dsp-instructions.png" >
+        <meta  property="og:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/lessons/31-fft-butterfly.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -75,15 +71,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/spectrum-analyzer/lessons/50-dsp-instructions/" >
+        <meta  property="og:url"  content="https://dmccreary.github.io/spectrum-analyzer/lessons/31-fft-butterfly/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="DSP Instructions - Spectrum Analyzer" >
+        <meta  name="twitter:title"  content="FFT Butterfly Operations on the Raspberry Pi Pico 2 - Spectrum Analyzer" >
       
         <meta  name="twitter:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/lessons/50-dsp-instructions.png" >
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/lessons/31-fft-butterfly.png" >
       
     
     
@@ -104,7 +100,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#new-dsp-instructions-in-the-pico-2" class="md-skip">
+        <a href="#fft-butterfly-operations-on-the-raspberry-pi-pico-2" class="md-skip">
           Skip to content
         </a>
       
@@ -139,7 +135,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              DSP Instructions
+              FFT Butterfly Operations on the Raspberry Pi Pico 2
             
           </span>
         </div>
@@ -458,19 +454,17 @@
       
   
   
-    
   
   
-  
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
@@ -484,7 +478,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Lessons
@@ -705,30 +699,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    DSP Instructions
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../50-dsp-instructions/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -737,110 +711,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#perplexity-response" class="md-nav__link">
-    <span class="md-ellipsis">
-      Perplexity Response
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Perplexity Response">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-dsp-assembly-language-functions" class="md-nav__link">
-    <span class="md-ellipsis">
-      Key DSP Assembly Language Functions
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Key DSP Assembly Language Functions">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#1-floating-point-unit-fpu-integration" class="md-nav__link">
-    <span class="md-ellipsis">
-      1. Floating-Point Unit (FPU) Integration
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#2-thumb-2-instruction-set" class="md-nav__link">
-    <span class="md-ellipsis">
-      2. Thumb-2 Instruction Set
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-dsp-extensions" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. DSP Extensions
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#optimizing-fft-with-rp2350-assembly" class="md-nav__link">
-    <span class="md-ellipsis">
-      Optimizing FFT with RP2350 Assembly
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#performance-impact" class="md-nav__link">
-    <span class="md-ellipsis">
-      Performance Impact
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#implementation-steps" class="md-nav__link">
-    <span class="md-ellipsis">
-      Implementation Steps
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1147,47 +1017,46 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#perplexity-response" class="md-nav__link">
+  <a href="#what-is-the-fft-and-why-do-we-need-it" class="md-nav__link">
     <span class="md-ellipsis">
-      Perplexity Response
+      What is the FFT and Why Do We Need It?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Perplexity Response">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#key-dsp-assembly-language-functions" class="md-nav__link">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#what-are-butterfly-operations" class="md-nav__link">
     <span class="md-ellipsis">
-      Key DSP Assembly Language Functions
+      What Are Butterfly Operations?
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Key DSP Assembly Language Functions">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#arm-assembly-and-fft-on-the-pico-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      ARM Assembly and FFT on the Pico 2
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="ARM Assembly and FFT on the Pico 2">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#1-floating-point-unit-fpu-integration" class="md-nav__link">
+  <a href="#what-are-mac-instructions" class="md-nav__link">
     <span class="md-ellipsis">
-      1. Floating-Point Unit (FPU) Integration
+      What are MAC Instructions?
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#2-thumb-2-instruction-set" class="md-nav__link">
+  <a href="#how-the-pico-2-accelerates-this" class="md-nav__link">
     <span class="md-ellipsis">
-      2. Thumb-2 Instruction Set
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#3-dsp-extensions" class="md-nav__link">
-    <span class="md-ellipsis">
-      3. DSP Extensions
+      How the Pico 2 Accelerates This
     </span>
   </a>
   
@@ -1197,36 +1066,49 @@
     </nav>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#optimizing-fft-with-rp2350-assembly" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#calling-assembly-from-python" class="md-nav__link">
     <span class="md-ellipsis">
-      Optimizing FFT with RP2350 Assembly
+      Calling Assembly from Python
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#performance-impact" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#why-these-instructions-arent-used-in-standard-micropython" class="md-nav__link">
     <span class="md-ellipsis">
-      Performance Impact
+      Why These Instructions Aren't Used in Standard MicroPython
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
-  <a href="#implementation-steps" class="md-nav__link">
+      
+        <li class="md-nav__item">
+  <a href="#a-simple-python-example" class="md-nav__link">
     <span class="md-ellipsis">
-      Implementation Steps
+      A Simple Python Example
     </span>
   </a>
   
 </li>
-        
-      </ul>
-    </nav>
+      
+        <li class="md-nav__item">
+  <a href="#performance-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Improvements
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Conclusion
+    </span>
+  </a>
   
 </li>
       
@@ -1248,151 +1130,162 @@
   
 
 
-<h1 id="new-dsp-instructions-in-the-pico-2">New DSP Instructions in the Pico 2</h1>
-<div class="admonition prompt">
-<p class="admonition-title">Prompt</p>
-<p>What are the new DSP assembly language functions in the Raspberry Pi Pico 2 RP2350 instruction set ARMv8-M + Thumb-2. How can they be used to speed up a FFT algorithm</p>
-</div>
-<div class="admonition note">
-<p class="admonition-title">Note</p>
-<p>As of March 22nd, 2025 when this was written, OpenAI's ChatGPT o1 knowledge cutoff date is June 2024. The Pico 2 was introduced on Aug 8, 2024.  So OpenAi is not aware of the Pico 2 announcement and its features.  This is why I used Perplexity since it is able to search the current internet as sources for its results.</p>
-</div>
-<h2 id="perplexity-response">Perplexity Response</h2>
-<p>The new Raspberry Pi Pico 2’s RP2350 microcontroller introduces enhanced DSP capabilities through its ARMv8-M architecture and Thumb-2 instruction set, enabling significant performance improvements for FFT algorithms. Here’s how these features are leveraged.</p>
-<h3 id="key-dsp-assembly-language-functions">Key DSP Assembly Language Functions</h3>
-<h4 id="1-floating-point-unit-fpu-integration">1. <strong>Floating-Point Unit (FPU) Integration</strong></h4>
-<p>The RP2350 includes a dedicated FPU, allowing hardware-accelerated floating-point operations critical for FFTs. This replaces slower software-based emulation used in the earlier RP2040, reducing computation time for operations like complex multiplications and additions<sup id="fnref:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref:3"><a class="footnote-ref" href="#fn:3">3</a></sup>.</p>
-<h4 id="2-thumb-2-instruction-set">2. <strong>Thumb-2 Instruction Set</strong></h4>
-<p>Thumb-2 combines 16- and 32-bit instructions, improving code density and execution efficiency. For example:</p>
+<h1 id="fft-butterfly-operations-on-the-raspberry-pi-pico-2">FFT Butterfly Operations on the Raspberry Pi Pico 2</h1>
+<p>Butterfly operations are the core of the Fast Fourier Transform (FFT) algorithm, and understanding them is key to appreciating how modern microcontrollers like the Raspberry Pi Pico 2 can efficiently perform signal processing tasks. Let's explore how these operations work and how they're accelerated by new hardware instructions.</p>
+<h2 id="what-is-the-fft-and-why-do-we-need-it">What is the FFT and Why Do We Need It?</h2>
+<p>The Fast Fourier Transform (FFT) is an algorithm that converts a signal from the time domain (how it changes over time) to the frequency domain (what frequencies it contains). This is incredibly useful for:</p>
+<ul>
+<li>Audio processing (extracting bass, treble, etc.)</li>
+<li>Vibration analysis</li>
+<li>Signal filtering</li>
+<li>Speech recognition</li>
+<li>And many other applications</li>
+</ul>
+<p>In this project, we are implementing FFT on the Pico 2 microcontrollers, particularly for sound analysis with the <a href="../../glossary/#inmp441-microphone">INMP441 microphone</a>.</p>
+<h2 id="what-are-butterfly-operations">What Are Butterfly Operations?</h2>
+<p>The name "butterfly" comes from the shape of the data flow diagram that represents the computation:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>; Example: Multiply-Accumulate (MAC) operation using FPU
-VMLA.F32 S0, S1, S2  ; S0 = S0 + (S1 * S2)
+<span class="normal">2</span>
+<span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>Input A ──►──┐       ┌──► Output A&#39;
+             ×       ×
+Input B ──►──┘       └──► Output B&#39;
 </code></pre></div></td></tr></table></div>
-<p>This single-cycle MAC instruction accelerates FFT’s butterfly operations<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:4"><a class="footnote-ref" href="#fn:4">4</a></sup>.</p>
-<h4 id="3-dsp-extensions">3. <strong>DSP Extensions</strong></h4>
-<p>ARMv8-M adds DSP-oriented instructions like SIMD (Single Instruction Multiple Data) for parallel processing. For instance:</p>
-<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
-<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>; SIMD example for parallel data processing
-VADD.F32 Q0, Q1, Q2  ; Add four 32-bit floats in Q1 and Q2, store in Q0
+<p>In this operation, two input values are combined to create two output values. Each butterfly combines elements that are a certain distance apart in the array, and this distance (called the "stride") changes as the algorithm progresses.</p>
+<p>At its core, a butterfly operation looks like this in math:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>A&#39; = A + B × W
+B&#39; = A - B × W
 </code></pre></div></td></tr></table></div>
-This reduces loop overhead in FFT stages by processing multiple data points simultaneously<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup>.</p>
-<h3 id="optimizing-fft-with-rp2350-assembly">Optimizing FFT with RP2350 Assembly</h3>
-<ol>
-<li><strong>Hardware-Accelerated Arithmetic</strong>  </li>
-<li>Replace software-based floating-point operations with FPU instructions.  </li>
-<li>
-<p>Use <code>VFP</code> registers (S0-S31) for intermediate FFT results to avoid memory bottlenecks<sup id="fnref6:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref5:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</p>
-</li>
-<li>
-<p><strong>Loop Unrolling and Register Management</strong><br />
-   Unroll FFT butterfly loops in assembly to minimize branch penalties. Prioritize registers R0-R7 (Thumb-2’s low registers) for frequent operations<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.<br />
-   Example:</p>
-</li>
-</ol>
+<p>Where W is a "twiddle factor" (a complex number based on a root of unity), and A and B are complex numbers from your data array.</p>
+<h2 id="arm-assembly-and-fft-on-the-pico-2">ARM Assembly and FFT on the Pico 2</h2>
+<p>The Raspberry Pi Pico 2 uses the RP2040 microcontroller with an ARM Cortex-M0+ core, but with a significant upgrade from the original Pico: hardware acceleration for certain operations, including multiply-accumulate (MAC) instructions that are perfect for butterfly operations.</p>
+<h3 id="what-are-mac-instructions">What are MAC Instructions?</h3>
+<p>MAC stands for Multiply-Accumulate. These instructions perform multiplication and addition in a single operation:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>accumulator = accumulator + (operand1 × operand2)
+</code></pre></div></td></tr></table></div>
+<p>This is exactly what we need for butterfly operations!</p>
+<p>Looking at the <code>dft.py</code> file you shared, I can see how the assembly code is implementing these operations. Here's a snippet that performs the butterfly calculation:</p>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
 <span class="normal">4</span>
 <span class="normal">5</span>
 <span class="normal">6</span>
-<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>; Unrolled loop for FFT stage
-.thumb_func
-fft_stage:
-    VLD1.F32 {S0-S3}, [R0]!  ; Load 4 floats
-    VADD.F32 S4, S0, S1      ; Compute real part
-    VSUB.F32 S5, S0, S1      ; Compute imaginary part
-    VST1.F32 {S4-S5}, [R1]!  ; Store results
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code># From the dft.py file
+vmul(s10, s12, s14)     # s10 = ax
+vmul(s9, s13, s15)      # s9  = by
+vsub(s10, s10, s9)      #  s10 = ax - by
+vmul(s11, s13, s14)     # s11 = ay
+vmul(s9,  s12, s15)     # s9  = bx
+vadd(s11, s11, s9)      # s11 = ay + bx
 </code></pre></div></td></tr></table></div>
+<p>This code is performing complex number multiplication and addition, which is the heart of the butterfly operation.</p>
+<h3 id="how-the-pico-2-accelerates-this">How the Pico 2 Accelerates This</h3>
+<p>The Pico 2 adds hardware support for MAC operations through new custom instructions. Instead of needing multiple separate instructions for multiplication and addition, it can do both in one step.</p>
+<p>For example, instead of:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>vmul(s9, s13, s15)      # Multiply
+vsub(s10, s10, s9)      # Subtract
+</code></pre></div></td></tr></table></div>
+<p>The Pico 2 can potentially use a single MAC instruction:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code>vmla(s10, s13, s15)     # Multiply and accumulate (with negative value for subtraction)
+</code></pre></div></td></tr></table></div>
+<p>This reduces both the number of instructions and the execution time.</p>
+<h2 id="calling-assembly-from-python">Calling Assembly from Python</h2>
+<p>Looking at your files, I can see how the Python code interfaces with the assembly routines. The key is using the <code>@micropython.asm_thumb</code> decorator, which allows writing ARM Thumb assembly directly in Python:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="nd">@micropython</span><span class="o">.</span><span class="n">asm_thumb</span>
+<span class="k">def</span> <span class="nf">fft</span><span class="p">(</span><span class="n">r0</span><span class="p">,</span> <span class="n">r1</span><span class="p">):</span>        <span class="c1"># r0 address of scratchpad, r1 = Control</span>
+    <span class="c1"># Assembly code follows</span>
+    <span class="c1"># ...</span>
+</code></pre></div></td></tr></table></div>
+<p>Then this function can be called from regular Python code like this:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="kn">from</span> <span class="nn">dft</span> <span class="kn">import</span> <span class="n">fft</span>
+
+<span class="c1"># Setup the data arrays and control information</span>
+<span class="c1"># ...</span>
+
+<span class="c1"># Call the assembly function</span>
+<span class="n">fft</span><span class="p">(</span><span class="n">ctrl</span><span class="p">,</span> <span class="n">FORWARD</span><span class="p">)</span>
+</code></pre></div></td></tr></table></div>
+<h2 id="why-these-instructions-arent-used-in-standard-micropython">Why These Instructions Aren't Used in Standard MicroPython</h2>
+<p>The standard MicroPython system running under Thonny doesn't fully utilize these new instructions for several reasons:</p>
 <ol>
-<li><strong>Memory Optimization</strong>  </li>
-</ol>
-<p>Use DMA channels to asynchronously transfer audio data from I2S peripherals (e.g., microphones) to RAM, freeing the CPU for FFT computations<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</p>
-<h3 id="performance-impact">Performance Impact</h3>
-<p>A 256-point FFT on the RP2350 completes in <strong>17 ms</strong> using optimized ARM assembly, compared to ~50 ms on the RP2040<sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. Key metrics:</p>
-<ul>
-<li><strong>FPU Utilization</strong>: Reduces floating-point operation latency by 4–10×lessons.  </li>
-<li><strong>SIMD Parallelism</strong>: Processes 2–4 data points per instruction, cutting FFT stage time by up to 50%<sup id="fnref4:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.  </li>
-</ul>
-<p>For real-time audio applications (e.g., spectrum analyzers), this allows:</p>
-<ul>
-<li>8 kHz sampling with 256-point FFTs at <strong>13.1 FPS</strong><sup id="fnref5:3"><a class="footnote-ref" href="#fn:3">3</a></sup>.  </li>
-<li>Lower latency for effects like reverb or noise suppression<sup id="fnref3:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</li>
-</ul>
-<h3 id="implementation-steps">Implementation Steps</h3>
-<ol>
-<li><strong>Toolchain Setup</strong></li>
-</ol>
-<p>Use the <code>pico-sdk</code> with <code>.thumb_func</code> directives to ensure Thumb-2 compatibility<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
-<ol>
-<li><strong>Leverage Existing Libraries</strong> </li>
-</ol>
-<p>Adapt ARM-optimized FFT libraries (e.g., Peter Hinch’s FFT library) to exploit RP2350-specific instructions<sup id="fnref4:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref2:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</p>
-<ol>
-<li><strong>Profiling</strong></li>
-</ol>
-<p>Use cycle-counting tools to identify bottlenecks in FFT stages and replace them with inline assembly<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.</p>
-<p>By integrating these techniques, developers can achieve real-time FFT performance on the Pico 2 for audio processing, spectral analysis, and IoT applications.</p>
-<p>Citations:</p>
-<p>Answer from Perplexity: pplx.ai/share</p>
-<div class="footnote">
-<hr />
-<ol>
-<li id="fn:1">
-<p>https://blog.smittytone.net/2022/06/19/get-started-with-arm-assembly-on-the-pi-pico/&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:1" title="Jump back to footnote 1 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+<li>
+<p><strong>Portability</strong>: MicroPython aims to work across many different microcontrollers, not just the Pico 2. Using specialized instructions would make the code less portable.</p>
 </li>
-<li id="fn:2">
-<p>https://www.reddit.com/r/synthdiy/comments/1enb1m2/raspberry_pi_pico_2_announced_with_floating_point/&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
+<li>
+<p><strong>Backward Compatibility</strong>: Using new instructions would break compatibility with the original Pico and other devices.</p>
 </li>
-<li id="fn:3">
-<p>https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<li>
+<p><strong>Compilation Time</strong>: MicroPython's JIT (Just-In-Time) compiler might not be optimized to recognize patterns that could use MAC instructions.</p>
 </li>
-<li id="fn:4">
-<p>https://dsp.stackexchange.com/questions/96118/raspberry-pi-picorp2040-or-rp2350-asm-pio-micropython-for-fft-dsp&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
-</li>
-<li id="fn:5">
-<p>https://people.ece.cornell.edu/land/courses/ece4760/RP2350/FFT_iFFT/index_FFT_iFFT.html&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
-</li>
-<li id="fn:6">
-<p>https://forums.raspberrypi.com/viewtopic.php?t=301003&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
-</li>
-<li id="fn:7">
-<p>https://forums.raspberrypi.com/viewtopic.php?t=381317&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
-</li>
-<li id="fn:8">
-<p>https://www.reddit.com/r/embedded/comments/1en9752/raspberry_pi_pico_2/&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
-</li>
-<li id="fn:9">
-<p>https://spotpear.com/wiki/Raspberry-Pi-Pico-2-RP2350.html&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
-</li>
-<li id="fn:10">
-<p>https://www.youtube.com/watch?v=mszrdmg-LGs&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
-</li>
-<li id="fn:11">
-<p>https://www.youtube.com/watch?v=_O3Aeyv2ILM&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
-</li>
-<li id="fn:12">
-<p>https://www.all-about-industries.com/raspberry-pi-pico-2-improvements-and-details-a-333778caf5af2721e0d27535c0acd8f4/&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
-</li>
-<li id="fn:13">
-<p>https://codalogic.com/blog/2023/01/07/Pico-Assembly-Programming&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
-</li>
-<li id="fn:14">
-<p>http://www.ulisp.com/show?4X21&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
-</li>
-<li id="fn:15">
-<p>https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
-</li>
-<li id="fn:16">
-<p>https://www.mathworks.com/help/dsp/ref/dsp.fft-system-object.html&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
-</li>
-<li id="fn:17">
-<p>https://www.youtube.com/watch?v=z6Al3_AuHgQ&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
-</li>
-<li id="fn:18">
-<p>https://www.raspberrypi.com/news/accelerating-fourier-transforms-using-the-gpu/&#160;<a class="footnote-backref" href="#fnref:18" title="Jump back to footnote 18 in the text">&#8617;</a></p>
+<li>
+<p><strong>ARM Version Support</strong>: The standard MicroPython might be compiled to target a specific ARM instruction set that doesn't include these newer instructions.</p>
 </li>
 </ol>
-</div>
+<p>The custom assembly code in your files is specifically written to leverage these instructions when available, which is why it achieves better performance.</p>
+<h2 id="a-simple-python-example">A Simple Python Example</h2>
+<p>Here's a simplified example showing how butterfly operations work in Python code:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
+<span class="normal"> 2</span>
+<span class="normal"> 3</span>
+<span class="normal"> 4</span>
+<span class="normal"> 5</span>
+<span class="normal"> 6</span>
+<span class="normal"> 7</span>
+<span class="normal"> 8</span>
+<span class="normal"> 9</span>
+<span class="normal">10</span>
+<span class="normal">11</span>
+<span class="normal">12</span>
+<span class="normal">13</span>
+<span class="normal">14</span>
+<span class="normal">15</span>
+<span class="normal">16</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="k">def</span> <span class="nf">butterfly</span><span class="p">(</span><span class="n">real</span><span class="p">,</span> <span class="n">imag</span><span class="p">,</span> <span class="n">idx_a</span><span class="p">,</span> <span class="n">idx_b</span><span class="p">,</span> <span class="n">twiddle_real</span><span class="p">,</span> <span class="n">twiddle_imag</span><span class="p">):</span>
+    <span class="c1"># Save original values</span>
+    <span class="n">a_real</span> <span class="o">=</span> <span class="n">real</span><span class="p">[</span><span class="n">idx_a</span><span class="p">]</span>
+    <span class="n">a_imag</span> <span class="o">=</span> <span class="n">imag</span><span class="p">[</span><span class="n">idx_a</span><span class="p">]</span>
+    <span class="n">b_real</span> <span class="o">=</span> <span class="n">real</span><span class="p">[</span><span class="n">idx_b</span><span class="p">]</span>
+    <span class="n">b_imag</span> <span class="o">=</span> <span class="n">imag</span><span class="p">[</span><span class="n">idx_b</span><span class="p">]</span>
+
+    <span class="c1"># Calculate B × W (complex multiplication)</span>
+    <span class="n">bw_real</span> <span class="o">=</span> <span class="n">b_real</span> <span class="o">*</span> <span class="n">twiddle_real</span> <span class="o">-</span> <span class="n">b_imag</span> <span class="o">*</span> <span class="n">twiddle_imag</span>
+    <span class="n">bw_imag</span> <span class="o">=</span> <span class="n">b_real</span> <span class="o">*</span> <span class="n">twiddle_imag</span> <span class="o">+</span> <span class="n">b_imag</span> <span class="o">*</span> <span class="n">twiddle_real</span>
+
+    <span class="c1"># Butterfly operation</span>
+    <span class="n">real</span><span class="p">[</span><span class="n">idx_a</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_real</span> <span class="o">+</span> <span class="n">bw_real</span>
+    <span class="n">imag</span><span class="p">[</span><span class="n">idx_a</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_imag</span> <span class="o">+</span> <span class="n">bw_imag</span>
+    <span class="n">real</span><span class="p">[</span><span class="n">idx_b</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_real</span> <span class="o">-</span> <span class="n">bw_real</span>
+    <span class="n">imag</span><span class="p">[</span><span class="n">idx_b</span><span class="p">]</span> <span class="o">=</span> <span class="n">a_imag</span> <span class="o">-</span> <span class="n">bw_imag</span>
+</code></pre></div></td></tr></table></div>
+<p>This Python code is much slower than the assembly version shown in your files, but it clearly illustrates what's happening in each butterfly operation.</p>
+<h2 id="performance-improvements">Performance Improvements</h2>
+<p>Looking at the README.md in your files, I can see the performance difference:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span></pre></div></td><td class="code"><div><pre><span></span><code>Board | Time (ms) |
+|-----|-----------|
+| Pyboard 1.x | 12.9 |
+| Pyboard D SF2W |  3.6 |
+| Pyboard D SF6W |  3.6 |
+| Pico 2 |  6.97 |
+</code></pre></div></td></tr></table></div>
+<p>The Pico 2 can perform a 1024-point FFT in just 6.97ms, which is remarkably fast for a microcontroller. While not as fast as the Pyboard D, it's still significantly faster than the original Pyboard, partly due to these hardware optimizations.</p>
+<h2 id="conclusion">Conclusion</h2>
+<p>The butterfly operations in FFT algorithms are perfectly suited for hardware acceleration through MAC instructions. The Raspberry Pi Pico 2's support for these instructions makes it a powerful platform for signal processing applications, especially when using custom assembly code like in the files you've shared.</p>
+<p>By understanding how these operations work and how to interface assembly with Python, you can create highly efficient signal processing applications, like the sound spectrum analyzer shown in your files.</p>
 
 
 
