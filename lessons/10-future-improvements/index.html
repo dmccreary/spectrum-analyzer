@@ -682,6 +682,66 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lowest-risk-performance-speedups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lowest Risk Performance Speedups
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lowest Risk Performance Speedups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-use-fused-multiply-add-operations-replacing-separate-multiply-and-add-operations-with-vfma-and-vfms-instructions-is-relatively-straightforward-and-low-risk-for-example-in-the-cmul-function-you-could-replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Use fused multiply-add operations - Replacing separate multiply and add operations with vfma and vfms instructions is relatively straightforward and low-risk. For example, in the CMUL function, you could replace:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-loop-unrolling" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Loop unrolling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-register-utilization-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Register utilization improvements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-minimize-function-call-overhead" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Minimize function call overhead
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-memory-alignment-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Memory alignment improvements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#synthetic-data-for-testing-performance" class="md-nav__link">
     <span class="md-ellipsis">
       Synthetic Data For Testing Performance
@@ -986,6 +1046,66 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#lowest-risk-performance-speedups" class="md-nav__link">
+    <span class="md-ellipsis">
+      Lowest Risk Performance Speedups
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Lowest Risk Performance Speedups">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-use-fused-multiply-add-operations-replacing-separate-multiply-and-add-operations-with-vfma-and-vfms-instructions-is-relatively-straightforward-and-low-risk-for-example-in-the-cmul-function-you-could-replace" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Use fused multiply-add operations - Replacing separate multiply and add operations with vfma and vfms instructions is relatively straightforward and low-risk. For example, in the CMUL function, you could replace:
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-loop-unrolling" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Loop unrolling
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-register-utilization-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Register utilization improvements
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-minimize-function-call-overhead" class="md-nav__link">
+    <span class="md-ellipsis">
+      4. Minimize function call overhead
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-memory-alignment-improvements" class="md-nav__link">
+    <span class="md-ellipsis">
+      5. Memory alignment improvements
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#synthetic-data-for-testing-performance" class="md-nav__link">
     <span class="md-ellipsis">
       Synthetic Data For Testing Performance
@@ -1112,15 +1232,21 @@ The code is functional but could potentially be optimized further to take advant
 </div>
 <p>Based on my analysis of the <code>dft.py</code> code, here are specific optimizations to improve FFT performance on the RP2350 with ARMv7-M Thumb and FPv5-SP:</p>
 <ol>
-<li><strong>Use SIMD operations for vector processing</strong>:</li>
-<li>Replace sequential floating-point operations with SIMD instructions where possible</li>
+<li>
+<p><strong>Use SIMD operations for vector processing</strong>:</p>
+</li>
+<li>
+<p>Replace sequential floating-point operations with SIMD instructions where possible</p>
+</li>
 <li>
 <p>For example, use vector load/store instructions to process multiple elements at once</p>
 </li>
 <li>
 <p><strong>Optimize memory access patterns</strong>:</p>
 </li>
-<li>Rearrange data structures to improve cache locality</li>
+<li>
+<p>Rearrange data structures to improve cache locality</p>
+</li>
 <li>Use pre-fetching instructions to reduce cache misses</li>
 <li>Align data to cache line boundaries</li>
 <li>
@@ -1129,21 +1255,27 @@ The code is functional but could potentially be optimized further to take advant
 <li>
 <p><strong>Loop optimizations</strong>:</p>
 </li>
-<li>Unroll critical loops (especially in the <code>DOMATHS</code> and FFT butterfly sections)</li>
+<li>
+<p>Unroll critical loops (especially in the <code>DOMATHS</code> and FFT butterfly sections)</p>
+</li>
 <li>
 <p>Use fewer branches in tight loops to reduce branch prediction failures</p>
 </li>
 <li>
 <p><strong>Leverage FPv5-SP specific instructions</strong>:</p>
 </li>
-<li>Use fused multiply-add operations (<code>vfma</code>, <code>vfms</code>) instead of separate multiply and add</li>
+<li>
+<p>Use fused multiply-add operations (<code>vfma</code>, <code>vfms</code>) instead of separate multiply and add</p>
+</li>
 <li>
 <p>These instructions can complete in a single cycle on FPv5-SP</p>
 </li>
 <li>
 <p><strong>Register utilization improvements</strong>:</p>
 </li>
-<li>Keep more intermediate values in FPU registers to reduce load/store operations</li>
+<li>
+<p>Keep more intermediate values in FPU registers to reduce load/store operations</p>
+</li>
 <li>The current implementation frequently moves values between memory and registers</li>
 <li>
 <p>Rework register allocation to minimize register spilling</p>
@@ -1151,7 +1283,9 @@ The code is functional but could potentially be optimized further to take advant
 <li>
 <p><strong>Algorithm-specific optimizations</strong>:</p>
 </li>
-<li>Implement radix-4 or split-radix FFT instead of radix-2</li>
+<li>
+<p>Implement radix-4 or split-radix FFT instead of radix-2</p>
+</li>
 <li>Radix-4 requires 25% fewer complex multiplications than radix-2</li>
 <li>
 <p>Consider implementing a mixed-radix approach for non-power-of-2 lengths</p>
@@ -1159,41 +1293,46 @@ The code is functional but could potentially be optimized further to take advant
 <li>
 <p><strong>Reduce function call overhead</strong>:</p>
 </li>
-<li>Inline small assembler functions like <code>CADD</code>, <code>CSUB</code>, and <code>CMUL</code> at their call sites</li>
+<li>
+<p>Inline small assembler functions like <code>CADD</code>, <code>CSUB</code>, and <code>CMUL</code> at their call sites</p>
+</li>
 <li>
 <p>This eliminates the overhead of pushing/popping registers and branch instructions</p>
 </li>
 <li>
 <p><strong>Specialized scaling approach</strong>:</p>
 </li>
-<li>Defer scaling operations until the end of the transform</li>
+<li>
+<p>Defer scaling operations until the end of the transform</p>
+</li>
 <li>
 <p>Apply scaling only where necessary, not to every element</p>
 </li>
 <li>
 <p><strong>Dual-issue optimization</strong>:</p>
 </li>
-<li>Rearrange instructions to improve dual-issue performance on the Cortex-M7</li>
+<li>
+<p>Rearrange instructions to improve dual-issue performance on the Cortex-M7</p>
+</li>
 <li>
 <p>Interleave FPU and integer operations where possible</p>
 </li>
 <li>
 <p><strong>Reduce twiddle factor computation overhead</strong>:</p>
-<ul>
-<li>Precompute more twiddle factors</li>
-<li>Consider storing them in a more efficient format</li>
-</ul>
 </li>
+<li>
+<p>Precompute more twiddle factors</p>
+</li>
+<li>Consider storing them in a more efficient format</li>
 </ol>
 <p>These optimizations could significantly improve the FFT performance, potentially getting closer to the theoretical limits of the hardware. The most substantial gains would likely come from SIMD operations, better memory access patterns, and the use of fused multiply-add instructions.</p>
+<h2 id="lowest-risk-performance-speedups">Lowest Risk Performance Speedups</h2>
 <div class="admonition prompt">
 <p class="admonition-title">Prompt</p>
 <p>Of all these 10 possible changes, which ones would have the lowest risk of breaking the existing code that we could try.  We would want to do timings on both versions to test to see if the changes improved the performance.</p>
 </div>
 <p>Looking at the possible optimizations, I'd recommend these lower-risk changes that could improve performance while minimizing the chance of breaking existing functionality:</p>
-<ol>
-<li>
-<p><strong>Use fused multiply-add operations</strong> - Replacing separate multiply and add operations with <code>vfma</code> and <code>vfms</code> instructions is relatively straightforward and low-risk. For example, in the <code>CMUL</code> function, you could replace:</p>
+<h3 id="1-use-fused-multiply-add-operations-replacing-separate-multiply-and-add-operations-with-vfma-and-vfms-instructions-is-relatively-straightforward-and-low-risk-for-example-in-the-cmul-function-you-could-replace">1.  <strong>Use fused multiply-add operations</strong> - Replacing separate multiply and add operations with <code>vfma</code> and <code>vfms</code> instructions is relatively straightforward and low-risk. For example, in the <code>CMUL</code> function, you could replace:</h3>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span></pre></div></td><td class="code"><div><pre><span></span><code>vmul(s10, s12, s14)     # s10 = ax
@@ -1207,20 +1346,14 @@ vsub(s10, s10, s9)      # s10 = ax - by
 vneg(s9, s13)           # s9 = -ay (if needed)
 vfms(s10, s13, s15)     # s10 = ax - (by)
 </code></pre></div></td></tr></table></div>
-</li>
-<li>
-<p><strong>Loop unrolling</strong> - Identify the most performance-critical loops (like the butterfly operations) and manually unroll them. This is a localized change that's unlikely to break functionality while reducing branch overhead.</p>
-</li>
-<li>
-<p><strong>Register utilization improvements</strong> - Reducing the number of loads and stores by keeping values in registers longer is relatively safe. Look for patterns where values are stored and then immediately reloaded.</p>
-</li>
-<li>
-<p><strong>Minimize function call overhead</strong> - The CMUL, CADD, and CSUB functions are called frequently during the transform. Inlining these at their call sites would eliminate function call overhead without changing their functionality.</p>
-</li>
-<li>
-<p><strong>Memory alignment improvements</strong> - Ensuring data is properly aligned for the FPU can improve performance without changing the algorithm. This might involve adjusting how arrays are allocated.</p>
-</li>
-</ol>
+<h3 id="2-loop-unrolling">2.  <strong>Loop unrolling</strong></h3>
+<p>Identify the most performance-critical loops (like the butterfly operations) and manually unroll them. This is a localized change that's unlikely to break functionality while reducing branch overhead.</p>
+<h3 id="3-register-utilization-improvements">3.  <strong>Register utilization improvements</strong></h3>
+<p>Reducing the number of loads and stores by keeping values in registers longer is relatively safe. Look for patterns where values are stored and then immediately reloaded.</p>
+<h3 id="4-minimize-function-call-overhead">4.  <strong>Minimize function call overhead</strong></h3>
+<p>The CMUL, CADD, and CSUB functions are called frequently during the transform. Inlining these at their call sites would eliminate function call overhead without changing their functionality.</p>
+<h3 id="5-memory-alignment-improvements">5.  <strong>Memory alignment improvements</strong></h3>
+<p>Ensuring data is properly aligned for the FPU can improve performance without changing the algorithm. This might involve adjusting how arrays are allocated.</p>
 <p>To properly test these changes:</p>
 <ol>
 <li>Create a copy of the original code as a baseline</li>
