@@ -12,9 +12,13 @@
         <meta name="author" content="Dan McCreary">
       
       
-        <link rel="canonical" href="https://dmccreary.github.io/spectrum-analyzer/sims/templates/">
+        <link rel="canonical" href="https://dmccreary.github.io/spectrum-analyzer/lessons/50-dsp-instructions/">
       
       
+        <link rel="prev" href="../10-future-improvements/">
+      
+      
+        <link rel="next" href="../../sims/">
       
       
       <link rel="icon" href="../../img/favicon.ico">
@@ -22,7 +26,7 @@
     
     
       
-        <title>MicroSim Template - Spectrum Analyzer</title>
+        <title>DSP Instructions - Spectrum Analyzer</title>
       
     
     
@@ -59,11 +63,11 @@
       
         <meta  property="og:type"  content="website" >
       
-        <meta  property="og:title"  content="MicroSim Template - Spectrum Analyzer" >
+        <meta  property="og:title"  content="DSP Instructions - Spectrum Analyzer" >
       
         <meta  property="og:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
       
-        <meta  property="og:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/sims/templates/index.png" >
+        <meta  property="og:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/lessons/50-dsp-instructions.png" >
       
         <meta  property="og:image:type"  content="image/png" >
       
@@ -71,15 +75,15 @@
       
         <meta  property="og:image:height"  content="630" >
       
-        <meta  property="og:url"  content="https://dmccreary.github.io/spectrum-analyzer/sims/templates/" >
+        <meta  property="og:url"  content="https://dmccreary.github.io/spectrum-analyzer/lessons/50-dsp-instructions/" >
       
         <meta  name="twitter:card"  content="summary_large_image" >
       
-        <meta  name="twitter:title"  content="MicroSim Template - Spectrum Analyzer" >
+        <meta  name="twitter:title"  content="DSP Instructions - Spectrum Analyzer" >
       
         <meta  name="twitter:description"  content="Create a sound spectrum analyzer using a Raspberry Pi Pico 2 and a OLED display." >
       
-        <meta  name="twitter:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/sims/templates/index.png" >
+        <meta  name="twitter:image"  content="https://dmccreary.github.io/spectrum-analyzer/assets/images/social/lessons/50-dsp-instructions.png" >
       
     
     
@@ -100,7 +104,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#microsim-template" class="md-skip">
+        <a href="#new-dsp-instructions-in-the-pico-2" class="md-skip">
           Skip to content
         </a>
       
@@ -135,7 +139,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              MicroSim Template
+              DSP Instructions
             
           </span>
         </div>
@@ -379,6 +383,8 @@
       
   
   
+    
+  
   
   
     
@@ -412,29 +418,378 @@
     
     
       
-        
-        
-      
     
-    <li class="md-nav__item md-nav__item--pruned md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
-  
-  
-    <a href="../../lessons/" class="md-nav__link">
-      
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Lessons
   </span>
   
 
-      
-        <span class="md-nav__icon md-icon"></span>
-      
-    </a>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Lessons
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../01-test-incoming-sound/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Test Sound
+  </span>
   
 
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../03-display-scroll/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Display Scroll
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../04-optimizing-fft-speed/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Optimization
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../05-frequency-shift/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Frequency Window
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../06-peak-frequency/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Peak Frequency
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../07-speedups/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Further Speedups
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../08-adding-timers/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Adding Timers
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../09-assembler-function/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Assembler FFT
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../10-future-improvements/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Future Work
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    DSP Instructions
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    DSP Instructions
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#perplexity-response" class="md-nav__link">
+    <span class="md-ellipsis">
+      Perplexity Response
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Perplexity Response">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#key-dsp-assembly-language-functions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Key DSP Assembly Language Functions
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Key DSP Assembly Language Functions">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-floating-point-unit-fpu-integration" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Floating-Point Unit (FPU) Integration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-thumb-2-instruction-set" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Thumb-2 Instruction Set
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-dsp-extensions" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. DSP Extensions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#optimizing-fft-with-rp2350-assembly" class="md-nav__link">
+    <span class="md-ellipsis">
+      Optimizing FFT with RP2350 Assembly
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Impact
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
       
     </li>
   
@@ -476,7 +831,7 @@
         
   
   
-    <a href="../" class="md-nav__link">
+    <a href="../../sims/" class="md-nav__link">
       
   
   <span class="md-ellipsis">
@@ -642,110 +997,47 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sample-iframe" class="md-nav__link">
+  <a href="#perplexity-response" class="md-nav__link">
     <span class="md-ellipsis">
-      Sample iframe
+      Perplexity Response
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#about-this-microsim" class="md-nav__link">
-    <span class="md-ellipsis">
-      About this MicroSim
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-prompt" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sample Prompt
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sample-response" class="md-nav__link">
-    <span class="md-ellipsis">
-      Sample Response
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lesson-plan" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lesson Plan
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Lesson Plan">
+    <nav class="md-nav" aria-label="Perplexity Response">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#grade-level-subject-and-topic" class="md-nav__link">
+  <a href="#key-dsp-assembly-language-functions" class="md-nav__link">
     <span class="md-ellipsis">
-      Grade Level, Subject and Topic
+      Key DSP Assembly Language Functions
     </span>
   </a>
   
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#activities" class="md-nav__link">
-    <span class="md-ellipsis">
-      Activities
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Activities">
+    <nav class="md-nav" aria-label="Key DSP Assembly Language Functions">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#fill-color" class="md-nav__link">
+  <a href="#1-floating-point-unit-fpu-integration" class="md-nav__link">
     <span class="md-ellipsis">
-      Fill Color
+      1. Floating-Point Unit (FPU) Integration
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#border-weight" class="md-nav__link">
+  <a href="#2-thumb-2-instruction-set" class="md-nav__link">
     <span class="md-ellipsis">
-      Border Weight
+      2. Thumb-2 Instruction Set
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#border-color" class="md-nav__link">
+  <a href="#3-dsp-extensions" class="md-nav__link">
     <span class="md-ellipsis">
-      Border Color
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#change-the-radius" class="md-nav__link">
-    <span class="md-ellipsis">
-      Change the Radius
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#change-the-location" class="md-nav__link">
-    <span class="md-ellipsis">
-      Change the Location
+      3. DSP Extensions
     </span>
   </a>
   
@@ -756,17 +1048,35 @@
   
 </li>
         
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+          <li class="md-nav__item">
+  <a href="#optimizing-fft-with-rp2350-assembly" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      Optimizing FFT with RP2350 Assembly
     </span>
   </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-impact" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Impact
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#implementation-steps" class="md-nav__link">
+    <span class="md-ellipsis">
+      Implementation Steps
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -785,7 +1095,7 @@
                   
 
   
-    <a href="https://github.com/dmccreary/spectrum-analyzer/blob/master/docs/sims/templates/index.md" title="Edit this page" class="md-content__button md-icon">
+    <a href="https://github.com/dmccreary/spectrum-analyzer/blob/master/docs/lessons/50-dsp-instructions.md" title="Edit this page" class="md-content__button md-icon">
       
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M10 20H6V4h7v5h5v3.1l2-2V8l-6-6H6c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h4zm10.2-7c.1 0 .3.1.4.2l1.3 1.3c.2.2.2.6 0 .8l-1 1-2.1-2.1 1-1c.1-.1.2-.2.4-.2m0 3.9L14.1 23H12v-2.1l6.1-6.1z"/></svg>
     </a>
@@ -793,101 +1103,111 @@
   
 
 
-<h1 id="microsim-template">MicroSim Template</h1>
-<iframe src="main.html" height="400"></iframe>
-
-<iframe src="main.html" height="400px" scrolling="no"></iframe>
-
-<!--
-![Image Name](./image.png){ width="400" }
--->
-
-<p><a class="md-button md-button--primary" href="main.html">Run the MicroSim</a>
-<a href="https://editor.p5js.org/dmccreary/sketches/dJq4nTXE4">Edit this MicroSim</a></p>
-<h2 id="sample-iframe">Sample iframe</h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="p">&lt;</span><span class="nt">iframe</span> <span class="na">src</span><span class="o">=</span><span class="s">&quot;https://dmccreary.github.io/microsims/sims/name/main.html&quot;</span> <span class="na">height</span><span class="o">=</span><span class="s">&quot;400&quot;</span>  <span class="na">scrolling</span><span class="o">=</span><span class="s">&quot;no&quot;</span><span class="p">&gt;&lt;/</span><span class="nt">iframe</span><span class="p">&gt;</span>
-</code></pre></div></td></tr></table></div>
-<h2 id="about-this-microsim">About this MicroSim</h2>
-<p>This MicroSim teaches us how to
-specify the drawing of a static filled circle.</p>
-<h2 id="sample-prompt">Sample Prompt</h2>
+<h1 id="new-dsp-instructions-in-the-pico-2">New DSP Instructions in the Pico 2</h1>
 <div class="admonition prompt">
 <p class="admonition-title">Prompt</p>
+<p>What are the new DSP assembly language functions in the Raspberry Pi Pico 2 RP2350 instruction set ARMv8-M + Thumb-2. How can they be used to speed up a FFT algorithm</p>
 </div>
-<p>Create a single file p5.js sketch.
-  Draw a green circle on a 600x400 canvas with a radius of 200.</p>
-<h2 id="sample-response">Sample Response</h2>
-<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"> 1</span>
-<span class="normal"> 2</span>
-<span class="normal"> 3</span>
-<span class="normal"> 4</span>
-<span class="normal"> 5</span>
-<span class="normal"> 6</span>
-<span class="normal"> 7</span>
-<span class="normal"> 8</span>
-<span class="normal"> 9</span>
-<span class="normal">10</span>
-<span class="normal">11</span>
-<span class="normal">12</span>
-<span class="normal">13</span>
-<span class="normal">14</span>
-<span class="normal">15</span>
-<span class="normal">16</span>
-<span class="normal">17</span>
-<span class="normal">18</span>
-<span class="normal">19</span>
-<span class="normal">20</span>
-<span class="normal">21</span>
-<span class="normal">22</span>
-<span class="normal">23</span>
-<span class="normal">24</span>
-<span class="normal">25</span></pre></div></td><td class="code"><div><pre><span></span><code><span class="c1">// canvas regions setup</span>
-<span class="c1">// let canvasWidth = 750;</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">drawHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">400</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">controlHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">50</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">canvasHeight</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">drawHeight</span><span class="w"> </span><span class="o">+</span><span class="w"> </span><span class="nx">controlHeight</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">aspectRatio</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">1.91</span><span class="p">;</span><span class="w"> </span><span class="c1">// Open Graph standard</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">canvasHeight</span><span class="w"> </span><span class="o">*</span><span class="w"> </span><span class="nx">aspectRatio</span><span class="p">;</span>
-<span class="kd">let</span><span class="w"> </span><span class="nx">radius</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="mf">200</span><span class="p">;</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">setup</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="kd">const</span><span class="w"> </span><span class="nx">canvas</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nx">createCanvas</span><span class="p">(</span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasHeight</span><span class="p">);</span>
-<span class="w">  </span><span class="kd">var</span><span class="w"> </span><span class="nx">mainElement</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="nb">document</span><span class="p">.</span><span class="nx">querySelector</span><span class="p">(</span><span class="s1">&#39;main&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">canvas</span><span class="p">.</span><span class="nx">parent</span><span class="p">(</span><span class="nx">mainElement</span><span class="p">);</span>
-<span class="p">}</span>
-
-<span class="kd">function</span><span class="w"> </span><span class="nx">draw</span><span class="p">()</span><span class="w"> </span><span class="p">{</span>
-<span class="w">  </span><span class="c1">// background of drawing region</span>
-<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;aliceblue&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">rect</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="p">);</span>
-
-<span class="w">  </span><span class="c1">// background of controls</span>
-<span class="w">  </span><span class="nx">fill</span><span class="p">(</span><span class="s1">&#39;whitegray&#39;</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">rect</span><span class="p">(</span><span class="mf">0</span><span class="p">,</span><span class="w"> </span><span class="nx">drawHeight</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasWidth</span><span class="p">,</span><span class="w"> </span><span class="nx">controlHeight</span><span class="p">);</span>
-<span class="w">  </span><span class="nx">circle</span><span class="p">(</span><span class="nx">canvasWidth</span><span class="o">/</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">canvasHeight</span><span class="o">/</span><span class="mf">2</span><span class="p">,</span><span class="w"> </span><span class="nx">radius</span><span class="p">);</span>
-<span class="p">}</span>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>As of March 22nd, 2025 when this was written, OpenAI's ChatGPT o1 knowledge cutoff date is June 2024. The Pico 2 was introduced on Aug 8, 2024.  So OpenAi is not aware of the Pico 2 announcement and its features.  This is why I used Perplexity since it is able to search the current internet as sources for its results.</p>
+</div>
+<h2 id="perplexity-response">Perplexity Response</h2>
+<p>The new Raspberry Pi Pico 2’s RP2350 microcontroller introduces enhanced DSP capabilities through its ARMv8-M architecture and Thumb-2 instruction set, enabling significant performance improvements for FFT algorithms. Here’s how these features are leveraged.</p>
+<h3 id="key-dsp-assembly-language-functions">Key DSP Assembly Language Functions</h3>
+<h4 id="1-floating-point-unit-fpu-integration">1. <strong>Floating-Point Unit (FPU) Integration</strong></h4>
+<p>The RP2350 includes a dedicated FPU, allowing hardware-accelerated floating-point operations critical for FFTs. This replaces slower software-based emulation used in the earlier RP2040, reducing computation time for operations like complex multiplications and additions[2][3].</p>
+<h4 id="2-thumb-2-instruction-set">2. <strong>Thumb-2 Instruction Set</strong></h4>
+<p>Thumb-2 combines 16- and 32-bit instructions, improving code density and execution efficiency. For example:</p>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>; Example: Multiply-Accumulate (MAC) operation using FPU
+VMLA.F32 S0, S1, S2  ; S0 = S0 + (S1 * S2)
 </code></pre></div></td></tr></table></div>
-<h2 id="lesson-plan">Lesson Plan</h2>
-<h3 id="grade-level-subject-and-topic">Grade Level, Subject and Topic</h3>
-<p>9th grade geometry. Circle and radius.</p>
-<h3 id="activities">Activities</h3>
-<h4 id="fill-color">Fill Color</h4>
-<p>Change the color in the prompt.  You
-can specify any one of the <a href="https://www.w3schools.com/tags/ref_colornames.asp">140 named colors</a>.</p>
-<h4 id="border-weight">Border Weight</h4>
-<p>Change the prompt to include a black border of
-width 10.</p>
-<h4 id="border-color">Border Color</h4>
-<p>Change the prompt to make the border purple.</p>
-<h4 id="change-the-radius">Change the Radius</h4>
-<p>Change the prompt to make the circle smaller
-or larger by changing the radius from 10 to 200.</p>
-<h4 id="change-the-location">Change the Location</h4>
-<p>Change the prompt to move the circle to the left or right.</p>
-<h2 id="references">References</h2>
+<p>This single-cycle MAC instruction accelerates FFT’s butterfly operations[1][4].</p>
+<h4 id="3-dsp-extensions">3. <strong>DSP Extensions</strong></h4>
+<p>ARMv8-M adds DSP-oriented instructions like SIMD (Single Instruction Multiple Data) for parallel processing. For instance:</p>
+<p><div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span></pre></div></td><td class="code"><div><pre><span></span><code>; SIMD example for parallel data processing
+VADD.F32 Q0, Q1, Q2  ; Add four 32-bit floats in Q1 and Q2, store in Q0
+</code></pre></div></td></tr></table></div>
+This reduces loop overhead in FFT stages by processing multiple data points simultaneously[2][4].</p>
+<h3 id="optimizing-fft-with-rp2350-assembly">Optimizing FFT with RP2350 Assembly</h3>
+<ol>
+<li><strong>Hardware-Accelerated Arithmetic</strong>  </li>
+<li>Replace software-based floating-point operations with FPU instructions.  </li>
+<li>
+<p>Use <code>VFP</code> registers (S0-S31) for intermediate FFT results to avoid memory bottlenecks[3][5].</p>
+</li>
+<li>
+<p><strong>Loop Unrolling and Register Management</strong><br />
+   Unroll FFT butterfly loops in assembly to minimize branch penalties. Prioritize registers R0-R7 (Thumb-2’s low registers) for frequent operations[1][6].<br />
+   Example:</p>
+</li>
+</ol>
+<div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
+<span class="normal">2</span>
+<span class="normal">3</span>
+<span class="normal">4</span>
+<span class="normal">5</span>
+<span class="normal">6</span>
+<span class="normal">7</span></pre></div></td><td class="code"><div><pre><span></span><code>; Unrolled loop for FFT stage
+.thumb_func
+fft_stage:
+    VLD1.F32 {S0-S3}, [R0]!  ; Load 4 floats
+    VADD.F32 S4, S0, S1      ; Compute real part
+    VSUB.F32 S5, S0, S1      ; Compute imaginary part
+    VST1.F32 {S4-S5}, [R1]!  ; Store results
+</code></pre></div></td></tr></table></div>
+<ol>
+<li><strong>Memory Optimization</strong><br />
+   Use DMA channels to asynchronously transfer audio data from I2S peripherals (e.g., microphones) to RAM, freeing the CPU for FFT computations[3][5].</li>
+</ol>
+<h3 id="performance-impact">Performance Impact</h3>
+<p>A 256-point FFT on the RP2350 completes in <strong>17 ms</strong> using optimized ARM assembly, compared to ~50 ms on the RP2040[3]. Key metrics:</p>
 <ul>
-<li><a href="https://github.com/processing/p5.js/wiki/Positioning-your-canvas">Processing Wiki on Positioning Your Canvas</a></li>
+<li><strong>FPU Utilization</strong>: Reduces floating-point operation latency by 4–10×[2].  </li>
+<li><strong>SIMD Parallelism</strong>: Processes 2–4 data points per instruction, cutting FFT stage time by up to 50%[4][5].  </li>
 </ul>
+<p>For real-time audio applications (e.g., spectrum analyzers), this allows:</p>
+<ul>
+<li>8 kHz sampling with 256-point FFTs at <strong>13.1 FPS</strong>[3].  </li>
+<li>Lower latency for effects like reverb or noise suppression[5].</li>
+</ul>
+<h3 id="implementation-steps">Implementation Steps</h3>
+<ol>
+<li><strong>Toolchain Setup</strong></li>
+</ol>
+<p>Use the <code>pico-sdk</code> with <code>.thumb_func</code> directives to ensure Thumb-2 compatibility[1].</p>
+<ol>
+<li><strong>Leverage Existing Libraries</strong> </li>
+</ol>
+<p>Adapt ARM-optimized FFT libraries (e.g., Peter Hinch’s FFT library) to exploit RP2350-specific instructions[3][5].</p>
+<ol>
+<li><strong>Profiling</strong></li>
+</ol>
+<p>Use cycle-counting tools to identify bottlenecks in FFT stages and replace them with inline assembly[6].</p>
+<p>By integrating these techniques, developers can achieve real-time FFT performance on the Pico 2 for audio processing, spectral analysis, and IoT applications.</p>
+<p>Citations:
+[1] https://blog.smittytone.net/2022/06/19/get-started-with-arm-assembly-on-the-pi-pico/
+[2] https://www.reddit.com/r/synthdiy/comments/1enb1m2/raspberry_pi_pico_2_announced_with_floating_point/
+[3] https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/
+[4] https://dsp.stackexchange.com/questions/96118/raspberry-pi-picorp2040-or-rp2350-asm-pio-micropython-for-fft-dsp
+[5] https://people.ece.cornell.edu/land/courses/ece4760/RP2350/FFT_iFFT/index_FFT_iFFT.html
+[6] https://forums.raspberrypi.com/viewtopic.php?t=301003
+[7] https://forums.raspberrypi.com/viewtopic.php?t=381317
+[8] https://www.reddit.com/r/embedded/comments/1en9752/raspberry_pi_pico_2/
+[9] https://spotpear.com/wiki/Raspberry-Pi-Pico-2-RP2350.html
+[10] https://www.youtube.com/watch?v=mszrdmg-LGs
+[11] https://www.youtube.com/watch?v=_O3Aeyv2ILM
+[12] https://www.all-about-industries.com/raspberry-pi-pico-2-improvements-and-details-a-333778caf5af2721e0d27535c0acd8f4/
+[13] https://codalogic.com/blog/2023/01/07/Pico-Assembly-Programming
+[14] http://www.ulisp.com/show?4X21
+[15] https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html
+[16] https://www.mathworks.com/help/dsp/ref/dsp.fft-system-object.html
+[17] https://www.youtube.com/watch?v=z6Al3_AuHgQ
+[18] https://www.raspberrypi.com/news/accelerating-fourier-transforms-using-the-gpu/</p>
+<hr />
+<p>Answer from Perplexity: pplx.ai/share</p>
 
 
 
@@ -921,6 +1241,44 @@ or larger by changing the radius from 10 to 200.</p>
       
         <footer class="md-footer">
   
+    
+      
+      <nav class="md-footer__inner md-grid" aria-label="Footer" >
+        
+          
+          <a href="../10-future-improvements/" class="md-footer__link md-footer__link--prev" aria-label="Previous: Future Work">
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+            </div>
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Previous
+              </span>
+              <div class="md-ellipsis">
+                Future Work
+              </div>
+            </div>
+          </a>
+        
+        
+          
+          <a href="../../sims/" class="md-footer__link md-footer__link--next" aria-label="Next: Introduction">
+            <div class="md-footer__title">
+              <span class="md-footer__direction">
+                Next
+              </span>
+              <div class="md-ellipsis">
+                Introduction
+              </div>
+            </div>
+            <div class="md-footer__button md-icon">
+              
+              <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4 11v2h12l-5.5 5.5 1.42 1.42L19.84 12l-7.92-7.92L10.5 5.5 16 11z"/></svg>
+            </div>
+          </a>
+        
+      </nav>
     
   
   <div class="md-footer-meta md-typeset">
