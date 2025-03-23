@@ -61,6 +61,8 @@ theme:
     # this adds the prev and next icons in the footer
     - navigation.footer
     - content.action.edit
+  features:
+    - content.footnote.tooltips
 plugins:
   - search
   - social
@@ -71,6 +73,7 @@ markdown_extensions:
   - attr_list
   - pymdownx.highlight:
       linenums: true
+  - footnotes
 extra_css:
    - css/extra.css
 extra_javascript:
