@@ -38,6 +38,7 @@ nav:
     - FFT Butterfly: sims/fft-butterfly/index.md
     - Templates: sims/templates/index.md
   - Project Ideas: project-ideas.md
+  - Commercial Uses of FFTs: commercial-ffts.md
   - Feedback: feedback.md
   - License: license.md
   - Glossary: glossary.md

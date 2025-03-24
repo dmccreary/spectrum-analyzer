@@ -4,7 +4,7 @@
 
 When I was an undergraduate college student I worked in a physics lab.  The lab had a device called a [Gamma Ray Spectrometer](https://en.wikipedia.org/wiki/Gamma-ray_spectrometer).  The spectrometer put out a data on a teletype interface that showed the energy of different frequencies of gamma rays.  My professor asked me to automate the process of analyzing soil samples for different radioactive elements like Uranium.
 
-To do this work, we needed to do frequency analysis of this data.  I had to copy the data from the spectrometer to a 6502 microcomputer and move that data to a VAX-11 780 that had a total of 1MB of RAM (for the entire campus).  It did have a FORTRAN compiler and I found a book that had the FFT algorithm it it.  I dutifully types in the FORTRAN code and ran my first FFT, displaying the results on a beautiful [Tektronix](https://en.wikipedia.org/wiki/Tektronix_4010) graphics display terminal.  I spent many late hours in the basement of the computer center doing experiments with looking at the transforms of different data.  My girlfriend at the time had to come drag me out of the lab to go to the college dance parties.
+To do this work, we needed to do frequency analysis of this data.  I had to copy the data from the spectrometer to a 6502 microcomputer and move that data to a VAX-11 780 that had a total of 1MB of RAM (for the entire campus).  It did have a FORTRAN compiler and I found a book that had the FFT algorithm it it.  I dutifully types in the FORTRAN code and ran my first FFT, displaying the results on a beautiful [Tektronix 4010](https://en.wikipedia.org/wiki/Tektronix_4010) graphics display terminal.  I spent many late hours in the basement of the computer center doing experiments with looking at the transforms of different data.  My girlfriend at the time had to come drag me out of the lab to go to the college dance parties.
 
 I was hooked.
 
@@ -19,4 +19,4 @@ Fast forward to 2024 and the Raspberry Pi Foundation announces that their new Pi
 
 This book was written with the hope that we could help others along their journey to visualize data transformations.  This skill can be quickly generalized to many other domains such as machine learning and the generation of concept embeddings.  I hope the reader will find this as fascinating as I have.  I dedicate this book to all my future students that learn to see the world through transformations.
 
-But don't miss the dance party!  We had a lot of fun!
+But don't miss the dance party.  We had a lot of fun!
