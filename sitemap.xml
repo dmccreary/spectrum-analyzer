@@ -2,130 +2,138 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/contact/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/course-description/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/feedback/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/glossary/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/how-we-built-this-site/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/license/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/references/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/research/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/01-test-incoming-sound/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/03-display-scroll/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/04-optimizing-fft-speed/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/05-frequency-shift/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/06-peak-frequency/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/07-speedups/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/08-adding-timers/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/09-assembler-function/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/10-future-improvements/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/30-fft/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/31-fft-butterfly/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/50-dsp-instructions/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/51-vector-instructions/</loc>
+         <lastmod>2025-03-24</lastmod>
+    </url>
+    <url>
+         <loc>https://dmccreary.github.io/spectrum-analyzer/lessons/project-ideas/</loc>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/setup/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/setup/connections/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/setup/desktop/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/setup/hardware/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/sims/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/sims/base-and-treble/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/sims/fft-butterfly/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/sims/templates/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/sims/tone-generator/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
     <url>
          <loc>https://dmccreary.github.io/spectrum-analyzer/sims/waveform-types/</loc>
-         <lastmod>2025-03-23</lastmod>
+         <lastmod>2025-03-24</lastmod>
     </url>
 </urlset>
