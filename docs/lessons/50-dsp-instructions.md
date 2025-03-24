@@ -91,9 +91,9 @@ Use cycle-counting tools to identify bottlenecks in FFT stages and replace them 
 By integrating these techniques, developers can achieve real-time FFT performance on the Pico 2 for audio processing, spectral analysis, and IoT applications.
 
 Citations:
-[^1]: https://blog.smittytone.net/2022/06/19/get-started-with-arm-assembly-on-the-pi-pico/
-[^2]: https://www.reddit.com/r/synthdiy/comments/1enb1m2/raspberry_pi_pico_2_announced_with_floating_point/
-[^3]: https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/
+[^1]: [Get Started with Arm Assembly on the Pi Pico](https://blog.smittytone.net/2022/06/19/get-started-with-arm-assembly-on-the-pi-pico/)
+[^2]: [Reddit discussion on Pi Pico 2](https://www.reddit.com/r/synthdiy/comments/1enb1m2/raspberry_pi_pico_2_announced_with_floating_point/)
+[^3]: [Dan McCreary's Post on Reddit on the FFT Sound Spectrum](https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/)
 [^4]: https://dsp.stackexchange.com/questions/96118/raspberry-pi-picorp2040-or-rp2350-asm-pio-micropython-for-fft-dsp
 [^5]: https://people.ece.cornell.edu/land/courses/ece4760/RP2350/FFT_iFFT/index_FFT_iFFT.html
 [^6]: https://forums.raspberrypi.com/viewtopic.php?t=301003

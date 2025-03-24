@@ -20,6 +20,14 @@ A term definition is considered to be consistent with ISO metadata registry guid
 4. Non-circular
 5. Unencumbered with business rules
 
+#### Single Instruction Multiple Data
+
+A single assembler instruction that works on multiple data elements.
+
+**Example:** ARMv8-M adds DSP-oriented instructions like SIMD (Single Instruction Multiple Data) for parallel processing. For instance, the ARM VADD.F32 operator does vector addtions on multiple data elements.  This reduces loop overhead in FFT stages by processing multiple data points simultaneously.
+
+* Also known as: SIMD
+
 #### Spectrum Analyzer
 
 #### Term
