@@ -1073,7 +1073,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../project-ideas.md" class="md-nav__link">
+      <a href="../project-ideas/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1369,15 +1369,15 @@
 <li>FFT size: 512</li>
 <li>Sample rate: 16,000 Hz</li>
 <li>I am whistling a tone at 1,250 Hz</li>
-<li>Microphone: <a href="../../sensors/15-inmp441.md">INMP445</a></li>
+<li>Microphone: <a href="../setup/hardware/#inmp442">INMP445</a></li>
 </ul>
 <h2 id="chatgpt-prompt">ChatGPT Prompt</h2>
 <div class="admonition prompt">
 <p class="admonition-title">Prompt</p>
 <p>I would like to create an audio spectrum analyzer using a Raspberry Pi Pico 2 and a 128x64 OLED display using MicroPython. How would you suggest I go about this project. Break it down step-by-step.</p>
 </div>
-<p>I started this project using a low-cost sound sensor below, but then I upgraded to the <a href="../../sensors/15-inmp441.md">INMP445</a> on the I2S bus after seeing many problems with noise on the ADC.</p>
-<p><img alt="sound detection" src="../../img/sound-sensor.jpg" /> </p>
+<p>I started this project using a low-cost sound sensor below, but then I upgraded to the <a href="../setup/hardware/#inmp442">INMP445</a> on the I2S bus after seeing many problems with noise on the ADC using low-cost sound sensors with the analog output going to the analog-to-digital converter of the Pico.</p>
+<p><img alt="sound detection sensor" src="../img/sound-sensor.jpg" /> </p>
 <h2 id="chatgpt-gpt-4-response">ChatGPT GPT-4 Response</h2>
 <p>Creating an audio spectrum analyzer with a Raspberry Pi Pico and a 128x64 OLED display using MicroPython is a fascinating project that combines hardware interfacing with digital signal processing. Below is a step-by-step guide to help you get started on this project.</p>
 <h3 id="step-1-gather-the-components">Step 1: Gather the Components</h3>
