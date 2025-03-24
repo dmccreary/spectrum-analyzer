@@ -1,5 +1,11 @@
 # Glossary of Terms
 
+#### ARMv8-M
+
+A special version of the ARM version 8 instruction set customized for Microcontrollers that need to have signal processing capabilities.
+
+Note that the "-M" suffix denotes the "Microcontroller" version.
+
 ####  Butterfly Operation
 
 #### Fast Fourier Transform
@@ -7,8 +13,6 @@
 ### Fourier Transform
 
 #### INMP441 Microphone
-
-
 
 #### ISO Definition
 
