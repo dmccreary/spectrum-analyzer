@@ -41,25 +41,26 @@ This reduces loop overhead in FFT stages by processing multiple data points simu
 
 ### Optimizing FFT with RP2350 Assembly
 
-1. **Hardware-Accelerated Arithmetic**  
-   - Replace software-based floating-point operations with FPU instructions.  
-   - Use `VFP` registers (S0-S31) for intermediate FFT results to avoid memory bottlenecks[^3][^5].
+#### 1. **Hardware-Accelerated Arithmetic** 
 
-2. **Loop Unrolling and Register Management**  
-   Unroll FFT butterfly loops in assembly to minimize branch penalties. Prioritize registers R0-R7 (Thumb-2’s low registers) for frequent operations[^1][^6].  
+- Replace software-based floating-point operations with FPU instructions.  
+- Use `VFP` registers (S0-S31) for intermediate FFT results to avoid memory bottlenecks[^3][^5].
+
+#### 2. **Loop Unrolling and Register Management**  
+Unroll FFT butterfly loops in assembly to minimize branch penalties. Prioritize registers R0-R7 (Thumb-2’s low registers) for frequent operations[^1][^6].  
    Example:
 
-   ```armasm
-   ; Unrolled loop for FFT stage
-   .thumb_func
-   fft_stage:
-       VLD1.F32 {S0-S3}, [R0]!  ; Load 4 floats
-       VADD.F32 S4, S0, S1      ; Compute real part
-       VSUB.F32 S5, S0, S1      ; Compute imaginary part
-       VST1.F32 {S4-S5}, [R1]!  ; Store results
-   ```
+```armasm
+; Unrolled loop for FFT stage
+.thumb_func
+fft_stage:
+    VLD1.F32 {S0-S3}, [R0]!  ; Load 4 floats
+    VADD.F32 S4, S0, S1      ; Compute real part
+    VSUB.F32 S5, S0, S1      ; Compute imaginary part
+    VST1.F32 {S4-S5}, [R1]!  ; Store results
+```
 
-3. **Memory Optimization**  
+#### 3. **Memory Optimization**  
 
 Use DMA channels to asynchronously transfer audio data from I2S peripherals (e.g., microphones) to RAM, freeing the CPU for FFT computations[^3][^5].
 
@@ -76,6 +77,7 @@ For real-time audio applications (e.g., spectrum analyzers), this allows:
 - Lower latency for effects like reverb or noise suppression[^5].
 
 ### Implementation Steps
+
 1. **Toolchain Setup**
 
 Use the `pico-sdk` with `.thumb_func` directives to ensure Thumb-2 compatibility[^1].
@@ -93,21 +95,21 @@ By integrating these techniques, developers can achieve real-time FFT performanc
 Citations:
 [^1]: [Get Started with Arm Assembly on the Pi Pico](https://blog.smittytone.net/2022/06/19/get-started-with-arm-assembly-on-the-pi-pico/)
 [^2]: [Reddit discussion on Pi Pico 2](https://www.reddit.com/r/synthdiy/comments/1enb1m2/raspberry_pi_pico_2_announced_with_floating_point/)
-[^3]: [Dan McCreary's Post on Reddit on the FFT Sound Spectrum](https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/)
-[^4]: https://dsp.stackexchange.com/questions/96118/raspberry-pi-picorp2040-or-rp2350-asm-pio-micropython-for-fft-dsp
-[^5]: https://people.ece.cornell.edu/land/courses/ece4760/RP2350/FFT_iFFT/index_FFT_iFFT.html
-[^6]: https://forums.raspberrypi.com/viewtopic.php?t=301003
-[^7]: https://forums.raspberrypi.com/viewtopic.php?t=381317
-[^8]: https://www.reddit.com/r/embedded/comments/1en9752/raspberry_pi_pico_2/
-[^9]: https://spotpear.com/wiki/Raspberry-Pi-Pico-2-RP2350.html
-[^10]: https://www.youtube.com/watch?v=mszrdmg-LGs
-[^11]: https://www.youtube.com/watch?v=_O3Aeyv2ILM
-[^12]: https://www.all-about-industries.com/raspberry-pi-pico-2-improvements-and-details-a-333778caf5af2721e0d27535c0acd8f4/
-[^13]: https://codalogic.com/blog/2023/01/07/Pico-Assembly-Programming
-[^14]: http://www.ulisp.com/show?4X21
-[^15]: https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html
-[^16]: https://www.mathworks.com/help/dsp/ref/dsp.fft-system-object.html
-[^17]: https://www.youtube.com/watch?v=z6Al3_AuHgQ
-[^18]: https://www.raspberrypi.com/news/accelerating-fourier-transforms-using-the-gpu/
+[^3]: [Dan McCreary's Post on Reddit on the FFT Sound Spectrum Running on the Pico 2](https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/)
+[^4]: [StackExchange ASM PIO MicroPython for FFT DSP](https://dsp.stackexchange.com/questions/96118/raspberry-pi-picorp2040-or-rp2350-asm-pio-micropython-for-fft-dsp)
+[^5]: [Cornell LAND ECE4760](https://people.ece.cornell.edu/land/courses/ece4760/RP2350/FFT_iFFT/index_FFT_iFFT.html)
+[^6]: [Raspberry Pi Forum Topic 301003](https://forums.raspberrypi.com/viewtopic.php?t=301003)
+[^7]: [Raspberry Pi Forum Topic 381317](https://forums.raspberrypi.com/viewtopic.php?t=381317)
+[^8]: [Reddit Embedded Comments](https://www.reddit.com/r/embedded/comments/1en9752/raspberry_pi_pico_2/)
+[^9]: [Spotpear.com Wiki](https://spotpear.com/wiki/Raspberry-Pi-Pico-2-RP2350.html)
+[^10]: [YouTube](https://www.youtube.com/watch?v=mszrdmg-LGs)
+[^11]: [YouTube](https://www.youtube.com/watch?v=_O3Aeyv2ILM)
+[^12]: [All-About Industries Pico 2 Improvements](https://www.all-about-industries.com/raspberry-pi-pico-2-improvements-and-details-a-333778caf5af2721e0d27535c0acd8f4/)
+[^13]: [Codalogic on Pico Assembly Language Programming](https://codalogic.com/blog/2023/01/07/Pico-Assembly-Programming)
+[^14]: [ULisp](http://www.ulisp.com/show?4X21)
+[^15]: [RPI Docs on Pico](https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html)
+[^16]: [MathWorks.com](https://www.mathworks.com/help/dsp/ref/dsp.fft-system-object.html)
+[^17]: [YouTube](https://www.youtube.com/watch?v=z6Al3_AuHgQ)
+[^18]: [RPI News](https://www.raspberrypi.com/news/accelerating-fourier-transforms-using-the-gpu/)
 
 Answer from Perplexity: pplx.ai/share
