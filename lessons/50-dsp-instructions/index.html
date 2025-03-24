@@ -812,6 +812,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Optimizing FFT with RP2350 Assembly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-hardware-accelerated-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Hardware-Accelerated Arithmetic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-loop-unrolling-and-register-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Loop Unrolling and Register Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-memory-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Memory Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1288,6 +1321,39 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="Optimizing FFT with RP2350 Assembly">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-hardware-accelerated-arithmetic" class="md-nav__link">
+    <span class="md-ellipsis">
+      1. Hardware-Accelerated Arithmetic
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-loop-unrolling-and-register-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      2. Loop Unrolling and Register Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-memory-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      3. Memory Optimization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
         
           <li class="md-nav__item">
@@ -1360,18 +1426,14 @@ VADD.F32 Q0, Q1, Q2  ; Add four 32-bit floats in Q1 and Q2, store in Q0
 </code></pre></div></td></tr></table></div>
 This reduces loop overhead in FFT stages by processing multiple data points simultaneously<sup id="fnref2:2"><a class="footnote-ref" href="#fn:2">2</a></sup><sup id="fnref2:4"><a class="footnote-ref" href="#fn:4">4</a></sup>.</p>
 <h3 id="optimizing-fft-with-rp2350-assembly">Optimizing FFT with RP2350 Assembly</h3>
-<ol>
-<li><strong>Hardware-Accelerated Arithmetic</strong>  </li>
+<h4 id="1-hardware-accelerated-arithmetic">1. <strong>Hardware-Accelerated Arithmetic</strong></h4>
+<ul>
 <li>Replace software-based floating-point operations with FPU instructions.  </li>
-<li>
-<p>Use <code>VFP</code> registers (S0-S31) for intermediate FFT results to avoid memory bottlenecks<sup id="fnref6:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref5:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</p>
-</li>
-<li>
-<p><strong>Loop Unrolling and Register Management</strong><br />
-   Unroll FFT butterfly loops in assembly to minimize branch penalties. Prioritize registers R0-R7 (Thumb-2’s low registers) for frequent operations<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.<br />
+<li>Use <code>VFP</code> registers (S0-S31) for intermediate FFT results to avoid memory bottlenecks<sup id="fnref6:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref5:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</li>
+</ul>
+<h4 id="2-loop-unrolling-and-register-management">2. <strong>Loop Unrolling and Register Management</strong></h4>
+<p>Unroll FFT butterfly loops in assembly to minimize branch penalties. Prioritize registers R0-R7 (Thumb-2’s low registers) for frequent operations<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup><sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.<br />
    Example:</p>
-</li>
-</ol>
 <div class="highlight"><table class="highlighttable"><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal">1</span>
 <span class="normal">2</span>
 <span class="normal">3</span>
@@ -1386,9 +1448,7 @@ fft_stage:
     VSUB.F32 S5, S0, S1      ; Compute imaginary part
     VST1.F32 {S4-S5}, [R1]!  ; Store results
 </code></pre></div></td></tr></table></div>
-<ol>
-<li><strong>Memory Optimization</strong>  </li>
-</ol>
+<h4 id="3-memory-optimization">3. <strong>Memory Optimization</strong></h4>
 <p>Use DMA channels to asynchronously transfer audio data from I2S peripherals (e.g., microphones) to RAM, freeing the CPU for FFT computations<sup id="fnref2:3"><a class="footnote-ref" href="#fn:3">3</a></sup><sup id="fnref:5"><a class="footnote-ref" href="#fn:5">5</a></sup>.</p>
 <h3 id="performance-impact">Performance Impact</h3>
 <p>A 256-point FFT on the RP2350 completes in <strong>17 ms</strong> using optimized ARM assembly, compared to ~50 ms on the RP2040<sup id="fnref3:3"><a class="footnote-ref" href="#fn:3">3</a></sup>. Key metrics:</p>
@@ -1405,7 +1465,7 @@ fft_stage:
 <ol>
 <li><strong>Toolchain Setup</strong></li>
 </ol>
-<p>Use the <code>pico-sdk</code> with <code>.thumb_func</code> directives to ensure Thumb-2 compatibility<sup id="fnref2:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
+<p>Use the <code>pico-sdk</code> with <code>.thumb_func</code> directives to ensure Thumb-2 compatibility<sup id="fnref3:1"><a class="footnote-ref" href="#fn:1">1</a></sup>.</p>
 <ol>
 <li><strong>Leverage Existing Libraries</strong> </li>
 </ol>
@@ -1413,7 +1473,7 @@ fft_stage:
 <ol>
 <li><strong>Profiling</strong></li>
 </ol>
-<p>Use cycle-counting tools to identify bottlenecks in FFT stages and replace them with inline assembly<sup id="fnref:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.</p>
+<p>Use cycle-counting tools to identify bottlenecks in FFT stages and replace them with inline assembly<sup id="fnref2:6"><a class="footnote-ref" href="#fn:6">6</a></sup>.</p>
 <p>By integrating these techniques, developers can achieve real-time FFT performance on the Pico 2 for audio processing, spectral analysis, and IoT applications.</p>
 <p>Citations:</p>
 <p>Answer from Perplexity: pplx.ai/share</p>
@@ -1427,52 +1487,52 @@ fft_stage:
 <p><a href="https://www.reddit.com/r/synthdiy/comments/1enb1m2/raspberry_pi_pico_2_announced_with_floating_point/">Reddit discussion on Pi Pico 2</a>&#160;<a class="footnote-backref" href="#fnref:2" title="Jump back to footnote 2 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:2" title="Jump back to footnote 2 in the text">&#8617;</a></p>
 </li>
 <li id="fn:3">
-<p><a href="https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/">Dan McCreary's Post on Reddit on the FFT Sound Spectrum</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
+<p><a href="https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/">Dan McCreary's Post on Reddit on the FFT Sound Spectrum Running on the Pico 2</a>&#160;<a class="footnote-backref" href="#fnref:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:3" title="Jump back to footnote 3 in the text">&#8617;</a><a class="footnote-backref" href="#fnref6:3" title="Jump back to footnote 3 in the text">&#8617;</a></p>
 </li>
 <li id="fn:4">
-<p>https://dsp.stackexchange.com/questions/96118/raspberry-pi-picorp2040-or-rp2350-asm-pio-micropython-for-fft-dsp&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
+<p><a href="https://dsp.stackexchange.com/questions/96118/raspberry-pi-picorp2040-or-rp2350-asm-pio-micropython-for-fft-dsp">StackExchange ASM PIO MicroPython for FFT DSP</a>&#160;<a class="footnote-backref" href="#fnref:4" title="Jump back to footnote 4 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:4" title="Jump back to footnote 4 in the text">&#8617;</a></p>
 </li>
 <li id="fn:5">
-<p>https://people.ece.cornell.edu/land/courses/ece4760/RP2350/FFT_iFFT/index_FFT_iFFT.html&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
+<p><a href="https://people.ece.cornell.edu/land/courses/ece4760/RP2350/FFT_iFFT/index_FFT_iFFT.html">Cornell LAND ECE4760</a>&#160;<a class="footnote-backref" href="#fnref:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref3:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref4:5" title="Jump back to footnote 5 in the text">&#8617;</a><a class="footnote-backref" href="#fnref5:5" title="Jump back to footnote 5 in the text">&#8617;</a></p>
 </li>
 <li id="fn:6">
-<p>https://forums.raspberrypi.com/viewtopic.php?t=301003&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
+<p><a href="https://forums.raspberrypi.com/viewtopic.php?t=301003">Raspberry Pi Forum Topic 301003</a>&#160;<a class="footnote-backref" href="#fnref:6" title="Jump back to footnote 6 in the text">&#8617;</a><a class="footnote-backref" href="#fnref2:6" title="Jump back to footnote 6 in the text">&#8617;</a></p>
 </li>
 <li id="fn:7">
-<p>https://forums.raspberrypi.com/viewtopic.php?t=381317&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
+<p><a href="https://forums.raspberrypi.com/viewtopic.php?t=381317">Raspberry Pi Forum Topic 381317</a>&#160;<a class="footnote-backref" href="#fnref:7" title="Jump back to footnote 7 in the text">&#8617;</a></p>
 </li>
 <li id="fn:8">
-<p>https://www.reddit.com/r/embedded/comments/1en9752/raspberry_pi_pico_2/&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
+<p><a href="https://www.reddit.com/r/embedded/comments/1en9752/raspberry_pi_pico_2/">Reddit Embedded Comments</a>&#160;<a class="footnote-backref" href="#fnref:8" title="Jump back to footnote 8 in the text">&#8617;</a></p>
 </li>
 <li id="fn:9">
-<p>https://spotpear.com/wiki/Raspberry-Pi-Pico-2-RP2350.html&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
+<p><a href="https://spotpear.com/wiki/Raspberry-Pi-Pico-2-RP2350.html">Spotpear.com Wiki</a>&#160;<a class="footnote-backref" href="#fnref:9" title="Jump back to footnote 9 in the text">&#8617;</a></p>
 </li>
 <li id="fn:10">
-<p>https://www.youtube.com/watch?v=mszrdmg-LGs&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
+<p><a href="https://www.youtube.com/watch?v=mszrdmg-LGs">YouTube</a>&#160;<a class="footnote-backref" href="#fnref:10" title="Jump back to footnote 10 in the text">&#8617;</a></p>
 </li>
 <li id="fn:11">
-<p>https://www.youtube.com/watch?v=_O3Aeyv2ILM&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
+<p><a href="https://www.youtube.com/watch?v=_O3Aeyv2ILM">YouTube</a>&#160;<a class="footnote-backref" href="#fnref:11" title="Jump back to footnote 11 in the text">&#8617;</a></p>
 </li>
 <li id="fn:12">
-<p>https://www.all-about-industries.com/raspberry-pi-pico-2-improvements-and-details-a-333778caf5af2721e0d27535c0acd8f4/&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
+<p><a href="https://www.all-about-industries.com/raspberry-pi-pico-2-improvements-and-details-a-333778caf5af2721e0d27535c0acd8f4/">All-About Industries Pico 2 Improvements</a>&#160;<a class="footnote-backref" href="#fnref:12" title="Jump back to footnote 12 in the text">&#8617;</a></p>
 </li>
 <li id="fn:13">
-<p>https://codalogic.com/blog/2023/01/07/Pico-Assembly-Programming&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
+<p><a href="https://codalogic.com/blog/2023/01/07/Pico-Assembly-Programming">Codalogic on Pico Assembly Language Programming</a>&#160;<a class="footnote-backref" href="#fnref:13" title="Jump back to footnote 13 in the text">&#8617;</a></p>
 </li>
 <li id="fn:14">
-<p>http://www.ulisp.com/show?4X21&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
+<p><a href="http://www.ulisp.com/show?4X21">ULisp</a>&#160;<a class="footnote-backref" href="#fnref:14" title="Jump back to footnote 14 in the text">&#8617;</a></p>
 </li>
 <li id="fn:15">
-<p>https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
+<p><a href="https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html">RPI Docs on Pico</a>&#160;<a class="footnote-backref" href="#fnref:15" title="Jump back to footnote 15 in the text">&#8617;</a></p>
 </li>
 <li id="fn:16">
-<p>https://www.mathworks.com/help/dsp/ref/dsp.fft-system-object.html&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
+<p><a href="https://www.mathworks.com/help/dsp/ref/dsp.fft-system-object.html">MathWorks.com</a>&#160;<a class="footnote-backref" href="#fnref:16" title="Jump back to footnote 16 in the text">&#8617;</a></p>
 </li>
 <li id="fn:17">
-<p>https://www.youtube.com/watch?v=z6Al3_AuHgQ&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
+<p><a href="https://www.youtube.com/watch?v=z6Al3_AuHgQ">YouTube</a>&#160;<a class="footnote-backref" href="#fnref:17" title="Jump back to footnote 17 in the text">&#8617;</a></p>
 </li>
 <li id="fn:18">
-<p>https://www.raspberrypi.com/news/accelerating-fourier-transforms-using-the-gpu/&#160;<a class="footnote-backref" href="#fnref:18" title="Jump back to footnote 18 in the text">&#8617;</a></p>
+<p><a href="https://www.raspberrypi.com/news/accelerating-fourier-transforms-using-the-gpu/">RPI News</a>&#160;<a class="footnote-backref" href="#fnref:18" title="Jump back to footnote 18 in the text">&#8617;</a></p>
 </li>
 </ol>
 </div>
