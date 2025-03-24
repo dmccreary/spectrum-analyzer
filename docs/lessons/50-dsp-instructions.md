@@ -92,24 +92,28 @@ Use cycle-counting tools to identify bottlenecks in FFT stages and replace them 
 
 By integrating these techniques, developers can achieve real-time FFT performance on the Pico 2 for audio processing, spectral analysis, and IoT applications.
 
-Citations:
+## Footnotes
+
 [^1]: [Get Started with Arm Assembly on the Pi Pico](https://blog.smittytone.net/2022/06/19/get-started-with-arm-assembly-on-the-pi-pico/)
 [^2]: [Reddit discussion on Pi Pico 2](https://www.reddit.com/r/synthdiy/comments/1enb1m2/raspberry_pi_pico_2_announced_with_floating_point/)
 [^3]: [Dan McCreary's Post on Reddit on the FFT Sound Spectrum Running on the Pico 2](https://www.reddit.com/r/raspberrypipico/comments/1jg1j9r/fft_sound_spectrum_analyzer_running_on_a/)
 [^4]: [StackExchange ASM PIO MicroPython for FFT DSP](https://dsp.stackexchange.com/questions/96118/raspberry-pi-picorp2040-or-rp2350-asm-pio-micropython-for-fft-dsp)
 [^5]: [Cornell LAND ECE4760](https://people.ece.cornell.edu/land/courses/ece4760/RP2350/FFT_iFFT/index_FFT_iFFT.html)
 [^6]: [Raspberry Pi Forum Topic 301003](https://forums.raspberrypi.com/viewtopic.php?t=301003)
-[^7]: [Raspberry Pi Forum Topic 381317](https://forums.raspberrypi.com/viewtopic.php?t=381317)
-[^8]: [Reddit Embedded Comments](https://www.reddit.com/r/embedded/comments/1en9752/raspberry_pi_pico_2/)
-[^9]: [Spotpear.com Wiki](https://spotpear.com/wiki/Raspberry-Pi-Pico-2-RP2350.html)
-[^10]: [YouTube](https://www.youtube.com/watch?v=mszrdmg-LGs)
-[^11]: [YouTube](https://www.youtube.com/watch?v=_O3Aeyv2ILM)
-[^12]: [All-About Industries Pico 2 Improvements](https://www.all-about-industries.com/raspberry-pi-pico-2-improvements-and-details-a-333778caf5af2721e0d27535c0acd8f4/)
-[^13]: [Codalogic on Pico Assembly Language Programming](https://codalogic.com/blog/2023/01/07/Pico-Assembly-Programming)
-[^14]: [ULisp](http://www.ulisp.com/show?4X21)
-[^15]: [RPI Docs on Pico](https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html)
-[^16]: [MathWorks.com](https://www.mathworks.com/help/dsp/ref/dsp.fft-system-object.html)
-[^17]: [YouTube](https://www.youtube.com/watch?v=z6Al3_AuHgQ)
-[^18]: [RPI News](https://www.raspberrypi.com/news/accelerating-fourier-transforms-using-the-gpu/)
+
+## Other References
+
+1. [Raspberry Pi Forum Topic 381317](https://forums.raspberrypi.com/viewtopic.php?t=381317)
+1.  [Reddit Embedded Comments](https://www.reddit.com/r/embedded/comments/1en9752/raspberry_pi_pico_2/)
+1.  [Spotpear.com Wiki](https://spotpear.com/wiki/Raspberry-Pi-Pico-2-RP2350.html)
+1.  [YouTube](https://www.youtube.com/watch?v=mszrdmg-LGs)
+1.  [YouTube](https://www.youtube.com/watch?v=_O3Aeyv2ILM)
+1.  [All-About Industries Pico 2 Improvements](https://www.all-about-industries.com/raspberry-pi-pico-2-improvements-and-details-a-333778caf5af2721e0d27535c0acd8f4/)
+1.  [Codalogic on Pico Assembly Language Programming](https://codalogic.com/blog/2023/01/07/Pico-Assembly-Programming)
+1. [ULisp](http://www.ulisp.com/show?4X21)
+1. [RPI Docs on Pico](https://www.raspberrypi.com/documentation/microcontrollers/pico-series.html)
+1. [MathWorks.com](https://www.mathworks.com/help/dsp/ref/dsp.fft-system-object.html)
+1. [YouTube](https://www.youtube.com/watch?v=z6Al3_AuHgQ)
+1. [RPI News](https://www.raspberrypi.com/news/accelerating-fourier-transforms-using-the-gpu/)
 
 Answer from Perplexity: pplx.ai/share
