@@ -14,6 +14,13 @@ You can purchase low-cost sound sensors on eBay for about $1 each.  These device
 
 The other problem we have with these low-cost microphones is noise.  The reference voltage on the Raspberry Pi Pico has noticeable nose from the other circuits drawing power.
 
+I have purchased mono-amplifier boards such as [XH-M125 XPT8871 Mono Amplifier Board ](https://www.ebay.com/itm/404982504033) which sell for around $2 on eBay.  These might be useful for these microphones.
+
+### MAX4466
+![](../img/max4466.png){width="350px"} ![](../img/max4466-back.png){width="350px"}
+
+The MAX4466 Electret Microphone Amplifier is a better alternative to sound sensor boards without built-in amplification.  These can be purchased for about $1 on eBay.  They also have an adjustable gain trim pot on the back.
+
 ### INMP442
 
 We like the [INMP442](https://dmccreary.github.io/learning-micropython/sensors/15-inmp441/) since it has an I2S interface and very low noise.

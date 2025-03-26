@@ -10,7 +10,7 @@ import micropython
 from lib.dftclass import DFT
 
 # Constants
-SAMPLE_RATE = 16000
+SAMPLE_RATE = 8000 # our display max is 4KHz
 FFT_SIZE = 256
 DISPLAY_WIDTH = 128
 DISPLAY_HEIGHT = 64
@@ -32,7 +32,7 @@ spi_sck = Pin(2)    # SCK on pin 2
 spi_tx = Pin(3)     # MOSI on pin 3
 
 spi = SPI(0,
-    baudrate=100000,  # 100kHz
+    baudrate=10_000_000,  # 10MHz is the frequency for the SSD1306
     sck=spi_sck,
     mosi=spi_tx)
 

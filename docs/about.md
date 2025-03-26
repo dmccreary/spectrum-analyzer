@@ -1,6 +1,6 @@
 # About this Book
 
-![](img/gamma-ray-spectrometer-output.png)
+![](img/gamma-ray-spectrometer-output.png){ width="400px"}
 
 When I was an undergraduate college student I worked in a physics lab.  The lab had a device called a [Gamma Ray Spectrometer](https://en.wikipedia.org/wiki/Gamma-ray_spectrometer).  The spectrometer put out a data on a teletype interface that showed the energy of different frequencies of gamma rays.  My professor asked me to automate the process of analyzing soil samples for different radioactive elements like Uranium.
 
