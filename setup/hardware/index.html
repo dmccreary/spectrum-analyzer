@@ -22,7 +22,7 @@
       
       
       <link rel="icon" href="../../img/favicon.ico">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.45">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.43">
     
     
       
@@ -461,6 +461,15 @@
   <a href="#low-cost-sound-sensor" class="md-nav__link">
     <span class="md-ellipsis">
       Low Cost Sound Sensor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#max4466" class="md-nav__link">
+    <span class="md-ellipsis">
+      MAX4466
     </span>
   </a>
   
@@ -1254,6 +1263,15 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#max4466" class="md-nav__link">
+    <span class="md-ellipsis">
+      MAX4466
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#inmp442" class="md-nav__link">
     <span class="md-ellipsis">
       INMP442
@@ -1311,6 +1329,10 @@
 <p><img alt="sound detection sensor" src="../../img/sound-sensor.jpg" /> </p>
 <p>You can purchase low-cost sound sensors on eBay for about $1 each.  These devices come with an analog output that can be connected to the analog-to-digital GPIO of your Pico.  The low-cost device I used had a VERY small signal of only a few millivolts.  The ACD is looking for signals in the range of 0 to 3.3 volts. To be useful, these devices should be passed though a small amplifier to reach a voltage closer to 3 volts.</p>
 <p>The other problem we have with these low-cost microphones is noise.  The reference voltage on the Raspberry Pi Pico has noticeable nose from the other circuits drawing power.</p>
+<p>I have purchased mono-amplifier boards such as <a href="https://www.ebay.com/itm/404982504033">XH-M125 XPT8871 Mono Amplifier Board </a> which sell for around $2 on eBay.  These might be useful for these microphones.</p>
+<h3 id="max4466">MAX4466</h3>
+<p><img alt="" src="../../img/max4466.png" width="350px" /> <img alt="" src="../../img/max4466-back.png" width="350px" /></p>
+<p>The MAX4466 Electret Microphone Amplifier is a better alternative to sound sensor boards without built-in amplification.  These can be purchased for about $1 on eBay.  They also have an adjustable gain trim pot on the back.</p>
 <h3 id="inmp442">INMP442</h3>
 <p>We like the <a href="https://dmccreary.github.io/learning-micropython/sensors/15-inmp441/">INMP442</a> since it has an I2S interface and very low noise.</p>
 <h2 id="display">Display</h2>
@@ -1351,11 +1373,10 @@ place the Pico on the breadboard and it includes room for three mode setting but
     <div class="md-footer-meta__inner md-grid">
       <div class="md-copyright">
   
+    <div class="md-copyright__highlight">
+      Copyright &copy; 2025 Dan McCreary. Licensed under <a href="license/">CC BY-NC-SA 4.0</a> for non-commercial use.
+    </div>
   
-    Made with
-    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
-      Material for MkDocs
-    </a>
   
 </div>
       
