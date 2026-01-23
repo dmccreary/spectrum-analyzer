@@ -1,0 +1,46 @@
+{
+  "title": "Tone Generator MicroSim",
+  "description": "<iframe src=\"main.html\" height=\"250px\" scrolling=\"no\"></iframe>",
+  "subject": "Mathematics",
+  "topic": "Tone Generator MicroSim",
+  "gradeLevel": "6-12",
+  "bloomsTaxonomy": [
+    "Understand",
+    "Apply"
+  ],
+  "author": "Dan McCreary",
+  "dateCreated": "2026-01-23",
+  "dateModified": "2026-01-23",
+  "version": "1.0.0",
+  "license": "MIT",
+  "language": "en",
+  "format": "text/html",
+  "type": "Interactive Simulation",
+  "framework": "p5.js",
+  "url": "https://dmccreary.github.io/spectrum-analyzer/sims/tone-generator/",
+  "identifier": "https://dmccreary.github.io/spectrum-analyzer/sims/tone-generator/",
+  "_source": {
+    "repo": "spectrum-analyzer",
+    "sim": "tone-generator",
+    "github_url": "https://github.com/dmccreary/spectrum-analyzer/tree/main/docs/sims/tone-generator",
+    "auto_generated": true,
+    "generation_date": "2026-01-23"
+  },
+  "subjects": [
+    "Mathematics",
+    "Physics",
+    "Chemistry",
+    "Engineering"
+  ],
+  "visualizationType": [
+    "graph",
+    "interactive-demo",
+    "map"
+  ],
+  "learningObjectives": [
+    "Understand the mathematical concept of tone generator",
+    "Apply tone generator to solve problems",
+    "Visualize and interpret tone generator relationships",
+    "Experiment with parameters to observe their effects on tone generator"
+  ]
+}

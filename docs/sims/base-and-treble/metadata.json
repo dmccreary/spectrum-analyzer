@@ -1,0 +1,46 @@
+{
+  "title": "Base and Treble Amplifier Controls",
+  "description": "<iframe src=\"main.html\" height=\"360\" scrolling=\"no\" style=\"overflow: hidden;\"></iframe>",
+  "subject": "Mathematics",
+  "topic": "Base and Treble Amplifier Controls",
+  "gradeLevel": "6-12",
+  "bloomsTaxonomy": [
+    "Understand",
+    "Apply"
+  ],
+  "author": "Dan McCreary",
+  "dateCreated": "2026-01-23",
+  "dateModified": "2026-01-23",
+  "version": "1.0.0",
+  "license": "MIT",
+  "language": "en",
+  "format": "text/html",
+  "type": "Interactive Simulation",
+  "framework": "p5.js",
+  "url": "https://dmccreary.github.io/spectrum-analyzer/sims/base-and-treble/",
+  "identifier": "https://dmccreary.github.io/spectrum-analyzer/sims/base-and-treble/",
+  "_source": {
+    "repo": "spectrum-analyzer",
+    "sim": "base-and-treble",
+    "github_url": "https://github.com/dmccreary/spectrum-analyzer/tree/main/docs/sims/base-and-treble",
+    "auto_generated": true,
+    "generation_date": "2026-01-23"
+  },
+  "subjects": [
+    "Mathematics",
+    "Chemistry",
+    "Engineering"
+  ],
+  "visualizationType": [
+    "simulation",
+    "graph",
+    "interactive-demo",
+    "map"
+  ],
+  "learningObjectives": [
+    "Understand the mathematical concept of base and treble amplifier controls",
+    "Apply base and treble amplifier controls to solve problems",
+    "Visualize and interpret base and treble amplifier controls relationships",
+    "Experiment with parameters to observe their effects on base and treble amplifier controls"
+  ]
+}
