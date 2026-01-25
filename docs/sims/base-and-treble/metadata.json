@@ -42,5 +42,28 @@
     "Apply base and treble amplifier controls to solve problems",
     "Visualize and interpret base and treble amplifier controls relationships",
     "Experiment with parameters to observe their effects on base and treble amplifier controls"
-  ]
+  ],
+  "pedagogical": {
+    "pattern": "exploration",
+    "bloomAlignment": [
+      "understand",
+      "apply"
+    ],
+    "bloomVerbs": [
+      "compare",
+      "describe",
+      "apply",
+      "calculate",
+      "illustrate"
+    ],
+    "pacing": "self-paced",
+    "supportsPrediction": false,
+    "dataVisibility": "high",
+    "feedbackType": [
+      "immediate",
+      "corrective",
+      "explanatory"
+    ],
+    "interactionStyle": "manipulate"
+  }
 }
