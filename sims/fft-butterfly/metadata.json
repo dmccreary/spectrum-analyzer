@@ -43,10 +43,11 @@
     "map"
   ],
   "learningObjectives": [
-    "Understand the mathematical concept of fft butterfly",
-    "Apply fft butterfly to solve problems",
-    "Visualize and interpret fft butterfly relationships",
-    "Experiment with parameters to observe their effects on fft butterfly"
+    "Trace data flow stage by stage through a radix-2 butterfly network for a 4-, 8-, 16-, or 32-point FFT",
+    "Explain how the divide-and-conquer structure reduces transform cost from O(n^2) to O(n log n)",
+    "Identify the bit-reversed ordering of the FFT outputs and explain why the algorithm produces it",
+    "Predict how many butterfly stages are required as the selected FFT size doubles",
+    "Distinguish the input, intermediate, and output columns of the butterfly diagram"
   ],
   "pedagogical": {
     "pattern": "worked-example",

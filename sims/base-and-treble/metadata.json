@@ -38,10 +38,10 @@
     "map"
   ],
   "learningObjectives": [
-    "Understand the mathematical concept of base and treble amplifier controls",
-    "Apply base and treble amplifier controls to solve problems",
-    "Visualize and interpret base and treble amplifier controls relationships",
-    "Experiment with parameters to observe their effects on base and treble amplifier controls"
+    "Explain how a bass control boosts or cuts the low-frequency end of an amplifier's frequency response curve",
+    "Predict the shape of the response curve when the bass slider is boosted and the treble slider is cut",
+    "Identify the flat response produced when both the bass and treble sliders sit at their center position of 50",
+    "Compare the shelving behavior of the bass and treble controls at opposite ends of the audio spectrum"
   ],
   "pedagogical": {
     "pattern": "exploration",

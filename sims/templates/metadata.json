@@ -38,10 +38,10 @@
     "map"
   ],
   "learningObjectives": [
-    "Understand the mathematical concept of template",
-    "Apply template to solve problems",
-    "Visualize and interpret template relationships",
-    "Experiment with parameters to observe their effects on template"
+    "Identify the drawing region and control region that structure a p5.js MicroSim canvas",
+    "Explain how canvas.parent(document.querySelector('main')) attaches the sketch so it also runs in the p5.js editor",
+    "Calculate a canvas width from a fixed canvas height and the 1.91 Open Graph aspect ratio",
+    "Design a new sketch by replacing the template's circle-drawing code inside draw()"
   ],
   "pedagogical": {
     "pattern": "guided-discovery",
