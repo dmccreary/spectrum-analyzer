@@ -40,10 +40,10 @@
     "map"
   ],
   "learningObjectives": [
-    "Understand the mathematical concept of waveform types",
-    "Apply waveform types to solve problems",
-    "Visualize and interpret waveform types relationships",
-    "Experiment with parameters to observe their effects on waveform types"
+    "Distinguish the time-domain shapes of sine, square, triangle, and sawtooth waves by their color-coded traces",
+    "Compare two or more waveforms at an identical frequency by enabling several checkboxes at once",
+    "Explain how the frequency slider changes the number of cycles visible across the plot between 50 Hz and 1000 Hz",
+    "Predict which waveform contains the most abrupt transitions and therefore the richest harmonic content"
   ],
   "pedagogical": {
     "pattern": "exploration",

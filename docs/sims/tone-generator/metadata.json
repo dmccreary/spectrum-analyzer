@@ -38,10 +38,10 @@
     "map"
   ],
   "learningObjectives": [
-    "Understand the mathematical concept of tone generator",
-    "Apply tone generator to solve problems",
-    "Visualize and interpret tone generator relationships",
-    "Experiment with parameters to observe their effects on tone generator"
+    "Explain how a p5.Oscillator generates a sine tone at the frequency selected by the slider",
+    "Identify 440 Hz as the concert-A reference pitch that the frequency slider defaults to",
+    "Predict how the plotted wave's wavelength shortens as the frequency slider moves from 0 toward 4000 Hz",
+    "Relate a change in the numeric frequency value to the change in perceived pitch of the generated tone"
   ],
   "pedagogical": {
     "pattern": "exploration",
