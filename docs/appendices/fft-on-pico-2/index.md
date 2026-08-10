@@ -127,3 +127,7 @@ linked against `libCMSISDSP_cortex-m33.a`, calling `arm_rfft_fast_f32()` / `arm_
 8. [ARM-software/CMSIS-DSP](https://github.com/ARM-software/CMSIS-DSP)
 9. [Cornell ECE4760 RP2350 arithmetic benchmarks](https://people.ece.cornell.edu/land/courses/ece4760/RP2350/arithmetic/index_arithmetic.html)
 10. [RP2350 — Wikipedia](https://en.wikipedia.org/wiki/RP2350)
+
+## Follow-up project
+
+The open gap identified above — a CMSIS-DSP-backed FFT usermod for the `rp2` port, with real 512/1024-point benchmarks on Pico 2 hardware — is now being tracked as its own project: [fft-benchmarking](https://github.com/dmccreary/fft-benchmarking). That repo is where the test harness for validating and timing the new DSP-SIMD-accelerated FFT code will live, separate from this book.
