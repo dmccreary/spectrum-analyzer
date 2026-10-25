@@ -4,6 +4,7 @@
     "chapters": 0,
     "microsims": 5,
     "stories": 0,
+    "labs": 0,
     "glossaryTerms": 8,
     "faqs": 0,
     "quizQuestions": 0,
@@ -12,13 +13,13 @@
     "references": 0,
     "diagrams": 0,
     "equations": 0,
-    "words": 16890,
-    "links": 173,
-    "appendices": 0,
+    "words": 18141,
+    "links": 198,
+    "appendices": 1,
     "mascotImages": 0,
     "developmentStage": "Not specified",
-    "equivalentPages": 70
+    "equivalentPages": 75
   },
-  "metricsGeneratedBy": "Book Metrics Python Program v0.08",
-  "metricsGeneratedOn": "June 03, 2026 at 12:10 PM"
+  "metricsGeneratedBy": "Book Metrics Python Program v0.10",
+  "metricsGeneratedOn": "October 25, 2026 at 01:30 PM"
 }
